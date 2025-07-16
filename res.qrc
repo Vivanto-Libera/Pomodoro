@@ -18,5 +18,9 @@
         <file>images/setting.png</file>
         <file>images/speaker.png</file>
         <file>images/X.png</file>
+        <file>images/random.png</file>
+        <file>images/repeat.png</file>
+        <file>images/repeat_once.png</file>
+        <file>images/playList.png</file>
     </qresource>
 </RCC>
