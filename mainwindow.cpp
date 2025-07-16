@@ -33,3 +33,24 @@ void MainWindow::setCurTime()
     QString str=curTime.toString("hh:mm:ss");
     ui->lab_curTime->setText(str);
 }
+
+void MainWindow::on_btn_listVis_clicked()
+{
+    if(listVisible)
+    {
+        listVisible=false;
+        ui->btn_listVis->setText(tr("显示"));
+        ui->listWidget->setVisible(false);
+        ui->btn_addItem->setEnabled(false);
+        ui->btn_deleteItem->setEnabled(false);
+    }
+    else
+    {
+        listVisible=true;
+        ui->btn_listVis->setText(tr("隐藏"));
+        ui->listWidget->setVisible(true);
+        ui->btn_addItem->setEnabled(true);
+        ui->btn_deleteItem->setEnabled(true);
+    }
+}
+
