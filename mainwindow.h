@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QFile>
+#include <QTimer>
+#include <QTime>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -19,5 +22,10 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    void init();
+    bool listVisible;
+    QTimer *aTimer;
+private slots:
+    void setCurTime();
 };
 #endif // MAINWINDOW_H
