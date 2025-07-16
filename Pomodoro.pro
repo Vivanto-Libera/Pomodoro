@@ -21,10 +21,7 @@ FORMS += \
     mainwindow.ui
 
 TRANSLATIONS += \
-    Pomodoro_zh_CN.ts \
-    Pomodoro_en.ts \
-    Pomodoro_zh_TW.ts \
-    Pomodoro_esp.ts
+    Pomodoro_zh_CN.ts
 CONFIG += lrelease
 CONFIG += embed_translations
 

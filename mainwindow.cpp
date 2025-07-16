@@ -40,7 +40,7 @@ void MainWindow::on_btn_listVis_clicked()
     {
         listVisible=false;
         ui->btn_listVis->setText(tr("显示"));
-        ui->listWidget->setVisible(false);
+        ui->taskList->setHidden(true);
         ui->btn_addItem->setEnabled(false);
         ui->btn_deleteItem->setEnabled(false);
     }
@@ -48,9 +48,24 @@ void MainWindow::on_btn_listVis_clicked()
     {
         listVisible=true;
         ui->btn_listVis->setText(tr("隐藏"));
-        ui->listWidget->setVisible(true);
+        ui->taskList->setHidden(false);
         ui->btn_addItem->setEnabled(true);
         ui->btn_deleteItem->setEnabled(true);
     }
 }
 
+
+void MainWindow::on_btn_addItem_clicked()
+{
+    QListWidgetItem *aItem= new QListWidgetItem(tr("新项"));
+    aItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
+    ui->taskList->addItem(aItem);
+}
+
+
+void MainWindow::on_btn_deleteItem_clicked()
+{
+    int row= ui->taskList->currentRow();
+    QListWidgetItem *aItem=ui->taskList->takeItem(row);
+    delete aItem;
+}
