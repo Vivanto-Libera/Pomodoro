@@ -31,5 +31,6 @@ private slots:
     void on_btn_listVis_clicked();
     void on_btn_addItem_clicked();
     void on_btn_deleteItem_clicked();
+    void on_taskList_itemChanged(QListWidgetItem *item);
 };
 #endif // MAINWINDOW_H

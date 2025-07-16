@@ -58,6 +58,7 @@ void MainWindow::on_btn_listVis_clicked()
 void MainWindow::on_btn_addItem_clicked()
 {
     QListWidgetItem *aItem= new QListWidgetItem(tr("新项"));
+    aItem->setCheckState(Qt::Unchecked);
     aItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
     ui->taskList->addItem(aItem);
 }
@@ -69,3 +70,20 @@ void MainWindow::on_btn_deleteItem_clicked()
     QListWidgetItem *aItem=ui->taskList->takeItem(row);
     delete aItem;
 }
+
+void MainWindow::on_taskList_itemChanged(QListWidgetItem *item)
+{
+    QFont font = item->font();
+    if(item->checkState()==Qt::Checked)
+    {
+        font.setStrikeOut(true);
+        item->setForeground(Qt::gray);
+    }
+    else
+    {
+        font.setStrikeOut(false);
+        item->setForeground(Qt::black);
+    }
+    item->setFont(font);
+}
+
