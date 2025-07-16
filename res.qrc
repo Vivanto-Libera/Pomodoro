@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file>images/add.png</file>
+        <file>images/alarm.png</file>
+        <file>images/delete.png</file>
+        <file>images/goal.png</file>
+        <file>images/list.png</file>
+        <file>images/music.png</file>
+        <file>images/next.png</file>
+        <file>images/note.png</file>
+        <file>images/ongoing.png</file>
+        <file>images/pause.png</file>
+        <file>images/play.png</file>
+        <file>images/pomodoro.png</file>
+        <file>images/previous.png</file>
+        <file>images/reset.png</file>
+        <file>images/restart.png</file>
+        <file>images/setting.png</file>
+        <file>images/speaker.png</file>
+        <file>images/X.png</file>
+    </qresource>
+</RCC>
