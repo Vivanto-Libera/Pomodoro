@@ -54,13 +54,11 @@ void MainWindow::readItems()
     QDataStream fileStream(&aFile);
     fileStream.setVersion(QDataStream::Qt_6_9);
     fileStream.setByteOrder(QDataStream::BigEndian);
-    qDebug()<<"444";
     while(!fileStream.atEnd())
     {
         aTaskItem aItem;
         fileStream>>aItem;
         taskListItems<<aItem;
-        qDebug()<<"333";
     }
     aFile.close();
 }
@@ -81,7 +79,6 @@ void MainWindow::saveItems()
     for(int i=0;i<taskListItems.count();i++)
     {
         fileStream<<taskListItems.at(i);
-        qDebug()<<"111";
     }
     aFile.close();
 }
@@ -96,7 +93,6 @@ void MainWindow::setItems()
         if(taskListItems.at(i).checked)
             aItem->setCheckState(Qt::Checked);
         ui->taskList->addItem(aItem);
-        qDebug()<<"222";
     }
 }
 
