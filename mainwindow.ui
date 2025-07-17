@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>599</height>
+    <height>646</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -73,13 +73,30 @@ QSlider::handle
 QSlider::groove
 {
 	height:8px;
-	background-color:#C0C0C0;
+	background-color:rgb(175,240,240);
 	border-radius:4px;
 }
 QSlider::sub-page
 {
 	background-color:#FF6347;
 	border-radius:4px;
+}
+QListWidget::item:hover
+{
+	background-color:rgb(250,215,210);
+}
+QListWidget::item:selected
+{
+	background-color:rgb(240,180,230);
+}
+QListWidget::indicator
+{
+	background-color:rgb(230,200,195);
+	border-radius:2px;
+}
+QListWidget::indicator:checked
+{
+	background-color:rgb(245,185,180);
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -741,34 +758,14 @@ QSlider::sub-page
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="0,0,0,0,0,0,0,0">
             <item>
-             <widget class="QComboBox" name="comboOrder">
-              <item>
-               <property name="text">
-                <string notr="true"/>
-               </property>
-               <property name="icon">
-                <iconset resource="res.qrc">
-                 <normaloff>:/icons/images/repeat.png</normaloff>:/icons/images/repeat.png</iconset>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string notr="true"/>
-               </property>
-               <property name="icon">
-                <iconset resource="res.qrc">
-                 <normaloff>:/icons/images/repeat_once.png</normaloff>:/icons/images/repeat_once.png</iconset>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string notr="true"/>
-               </property>
-               <property name="icon">
-                <iconset resource="res.qrc">
-                 <normaloff>:/icons/images/random.png</normaloff>:/icons/images/random.png</iconset>
-               </property>
-              </item>
+             <widget class="QPushButton" name="pushButton_3">
+              <property name="text">
+               <string/>
+              </property>
+              <property name="icon">
+               <iconset resource="res.qrc">
+                <normaloff>:/icons/images/playList.png</normaloff>:/icons/images/playList.png</iconset>
+              </property>
              </widget>
             </item>
             <item>
@@ -805,14 +802,34 @@ QSlider::sub-page
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="pushButton_3">
-              <property name="text">
-               <string/>
-              </property>
-              <property name="icon">
-               <iconset resource="res.qrc">
-                <normaloff>:/icons/images/playList.png</normaloff>:/icons/images/playList.png</iconset>
-              </property>
+             <widget class="QComboBox" name="comboOrder">
+              <item>
+               <property name="text">
+                <string notr="true"/>
+               </property>
+               <property name="icon">
+                <iconset resource="res.qrc">
+                 <normaloff>:/icons/images/repeat.png</normaloff>:/icons/images/repeat.png</iconset>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string notr="true"/>
+               </property>
+               <property name="icon">
+                <iconset resource="res.qrc">
+                 <normaloff>:/icons/images/repeat_once.png</normaloff>:/icons/images/repeat_once.png</iconset>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string notr="true"/>
+               </property>
+               <property name="icon">
+                <iconset resource="res.qrc">
+                 <normaloff>:/icons/images/random.png</normaloff>:/icons/images/random.png</iconset>
+               </property>
+              </item>
              </widget>
             </item>
             <item>
