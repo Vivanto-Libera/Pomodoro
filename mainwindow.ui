@@ -859,6 +859,9 @@ QListWidget::indicator:checked
             </item>
             <item>
              <widget class="QSlider" name="horizontalSlider">
+              <property name="maximum">
+               <number>100</number>
+              </property>
               <property name="orientation">
                <enum>Qt::Orientation::Horizontal</enum>
               </property>

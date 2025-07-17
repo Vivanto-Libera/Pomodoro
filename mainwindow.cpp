@@ -1,6 +1,17 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+QDataStream &operator<<(QDataStream &out,const MainWindow::aTaskItem &aItem)
+{
+    out<<aItem.aItem<<aItem.checked;
+    return out;
+}
+QDataStream &operator>>(QDataStream &in,MainWindow::aTaskItem &aItem)
+{
+    in>>aItem.aItem>>aItem.checked;
+    return in;
+}
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -43,11 +54,13 @@ void MainWindow::readItems()
     QDataStream fileStream(&aFile);
     fileStream.setVersion(QDataStream::Qt_6_9);
     fileStream.setByteOrder(QDataStream::BigEndian);
+    qDebug()<<"444";
     while(!fileStream.atEnd())
     {
-        QListWidgetItem *aItem=new QListWidgetItem;
-        fileStream>>*aItem;
-        taskListItems<<*aItem;
+        aTaskItem aItem;
+        fileStream>>aItem;
+        taskListItems<<aItem;
+        qDebug()<<"333";
     }
     aFile.close();
 }
@@ -66,7 +79,10 @@ void MainWindow::saveItems()
     fileStream.setVersion(QDataStream::Qt_6_9);
     fileStream.setByteOrder(QDataStream::BigEndian);
     for(int i=0;i<taskListItems.count();i++)
+    {
         fileStream<<taskListItems.at(i);
+        qDebug()<<"111";
+    }
     aFile.close();
 }
 
@@ -75,8 +91,12 @@ void MainWindow::setItems()
     for(int i=0;i<taskListItems.count();i++)
     {
         QListWidgetItem *aItem= new QListWidgetItem;
-        *aItem=taskListItems.at(i);
+        *aItem=taskListItems.at(i).aItem;
+        aItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
+        if(taskListItems.at(i).checked)
+            aItem->setCheckState(Qt::Checked);
         ui->taskList->addItem(aItem);
+        qDebug()<<"222";
     }
 }
 
@@ -114,7 +134,8 @@ void MainWindow::on_btn_addItem_clicked()
     aItem->setCheckState(Qt::Unchecked);
     aItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
     ui->taskList->addItem(aItem);
-    taskListItems<<*aItem;
+    aTaskItem aTItem={*aItem,false};
+    taskListItems<<aTItem;
 }
 
 
@@ -135,11 +156,13 @@ void MainWindow::on_taskList_itemChanged(QListWidgetItem *item)
     {
         font.setStrikeOut(true);
         item->setForeground(Qt::gray);
+        taskListItems.replace(ui->taskList->row(item),{*item,true});
     }
     else
     {
         font.setStrikeOut(false);
         item->setForeground(Qt::black);
+        taskListItems.replace(ui->taskList->row(item),{*item,false});
     }
     item->setFont(font);
 }

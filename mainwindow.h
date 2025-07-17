@@ -19,13 +19,18 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    struct aTaskItem
+    {
+        QListWidgetItem aItem;
+        bool checked;
+    };
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private:
     Ui::MainWindow *ui;
     QTimer *aTimer;
-    QList<QListWidgetItem> taskListItems;
+    QList<aTaskItem> taskListItems;
 
     void init();
     void readData();
