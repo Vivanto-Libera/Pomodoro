@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>646</height>
+    <height>661</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -213,7 +213,7 @@ QListWidget::indicator:checked
                  <string notr="true"/>
                 </property>
                 <property name="text">
-                 <string/>
+                 <string notr="true"/>
                 </property>
                 <property name="icon">
                  <iconset resource="res.qrc">
@@ -230,7 +230,7 @@ QListWidget::indicator:checked
                  <string/>
                 </property>
                 <property name="text">
-                 <string/>
+                 <string notr="true"/>
                 </property>
                 <property name="icon">
                  <iconset resource="res.qrc">
@@ -938,16 +938,6 @@ QListWidget::indicator:checked
      </layout>
     </item>
    </layout>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1000</width>
-     <height>20</height>
-    </rect>
-   </property>
   </widget>
  </widget>
  <resources>
