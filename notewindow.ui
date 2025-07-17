@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>笔记</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QPushButton
@@ -89,13 +89,41 @@ QListWidget::indicator:checked
 }
 QToolBar
 {
-	spacing:16px;
+	spacing:15px;
+}
+QPlainTextEdit
+{
+	background-color:rgb(255,228,225);
+	border-radius:4px;
+	border:2px solid rgb(210,180,140);
+}
+QToolButton
+{
+	background-color:rgb(255,228,225);
+	border-radius:4px;
+	border:1px solid rgb(210,205,210);
+}
+QToolButton:hover
+{
+	background-color:rgb(250,215,210);
+}
+QToolButton:pressed
+{
+	background-color:rgb(245,185,180);
+}
+QToolButton:checked
+{
+	background-color:rgb(245,185,180);
+}
+QToolBar
+{
+	padding:3px;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,1">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1,4,2">
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
@@ -110,7 +138,21 @@ QToolBar
        </spacer>
       </item>
       <item>
-       <widget class="QComboBox" name="noteCombo"/>
+       <widget class="QLabel" name="lab_note">
+        <property name="text">
+         <string>选择笔记</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QComboBox" name="noteCombo">
+        <property name="editable">
+         <bool>true</bool>
+        </property>
+       </widget>
       </item>
       <item>
        <spacer name="horizontalSpacer_2">
@@ -133,6 +175,18 @@ QToolBar
    </layout>
   </widget>
   <widget class="QToolBar" name="toolBar">
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>50</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>16777215</width>
+     <height>50</height>
+    </size>
+   </property>
    <property name="font">
     <font>
      <family>未来圆SC</family>
@@ -170,8 +224,8 @@ QToolBar
    <addaction name="act_bold"/>
    <addaction name="act_italic"/>
    <addaction name="act_underline"/>
-   <addaction name="act_clear"/>
    <addaction name="separator"/>
+   <addaction name="act_clear"/>
   </widget>
   <action name="act_cut">
    <property name="icon">

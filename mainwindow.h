@@ -7,6 +7,7 @@
 #include <QTime>
 #include <QListWidgetItem>
 #include <QList>
+#include <notewindow.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -45,5 +46,6 @@ private slots:
     void on_btn_addItem_clicked();
     void on_btn_deleteItem_clicked();
     void on_taskList_itemChanged(QListWidgetItem *item);
+    void on_btn_note_clicked();
 };
 #endif // MAINWINDOW_H

@@ -163,3 +163,11 @@ void MainWindow::on_taskList_itemChanged(QListWidgetItem *item)
     item->setFont(font);
 }
 
+
+void MainWindow::on_btn_note_clicked()
+{
+    NoteWindow *noteWindow= new NoteWindow(this);
+    noteWindow->setAttribute(Qt::WA_DeleteOnClose);
+    noteWindow->show();
+}
+
