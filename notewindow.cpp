@@ -17,7 +17,6 @@ NoteWindow::NoteWindow(QWidget *parent)
     ui->setupUi(this);
     if(!QFile::exists("notes.bin"))
     {
-        ui->noteCombo->addItem(tr("未命名笔记"));
         note aNote={ui->noteCombo->itemText(0),""};
         notes<<aNote;
     }
@@ -70,5 +69,55 @@ void NoteWindow::readNotes()
         fileStream>>notes;
     }
     aFile.close();
+}
+
+void NoteWindow::setNotes()
+{
+    ui->noteCombo->clear();
+    for(int i=0;i<notes.count();i++)
+    {
+        ui->noteCombo->addItem(notes.at(i).title);
+    }
+}
+
+
+void NoteWindow::on_noteCombo_editTextChanged(const QString &arg1)
+{
+    note aNote({arg1,notes.at(ui->noteCombo->currentIndex()).text});
+    notes.replace(ui->noteCombo->currentIndex(),aNote);
+}
+
+
+void NoteWindow::on_noteCombo_currentIndexChanged(int index)
+{
+    ui->plainTextEdit->setPlainText(notes.at(index).text);
+}
+
+
+void NoteWindow::on_btn_addNote_clicked()
+{
+    ui->noteCombo->addItem(tr("未命名笔记"));
+    note aNote={ui->noteCombo->itemText(ui->noteCombo->count()-1),""};
+    notes<<aNote;
+    ui->noteCombo->setCurrentIndex(ui->noteCombo->count()-1);
+}
+
+
+void NoteWindow::on_btn_deleteNote_clicked()
+{
+    if(ui->noteCombo->count()!=1)
+    {
+        QMessageBox::StandardButton result;
+        result=QMessageBox::question(this,tr("确认删除"),tr("是否删除该笔记？"));
+        if(result!=QMessageBox::Yes)
+            return;
+    }
+    else
+    {
+        QMessageBox::critical(this,tr("删除失败"),tr("无法删除最后一个笔记"));
+        return;
+    }
+    notes.removeAt(ui->noteCombo->currentIndex());
+    ui->noteCombo->removeItem(ui->noteCombo->currentIndex());
 }
 
