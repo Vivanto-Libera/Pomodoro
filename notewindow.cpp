@@ -21,12 +21,16 @@ NoteWindow::NoteWindow(QWidget *parent)
         notes<<aNote;
     }
     else
+    {
         readNotes();
-    ui->plainTextEdit->appendPlainText(notes.at(0).text);
+        setNotes();
+    }
+    ui->plainTextEdit->setPlainText(notes.at(0).text);
 }
 
 NoteWindow::~NoteWindow()
 {
+    saveNotes();
     delete ui;
 }
 
@@ -66,7 +70,9 @@ void NoteWindow::readNotes()
     fileStream.setByteOrder(QDataStream::BigEndian);
     while(!fileStream.atEnd())
     {
-        fileStream>>notes;
+        note aNote;
+        fileStream>>aNote;
+        notes<<aNote;
     }
     aFile.close();
 }
@@ -80,16 +86,25 @@ void NoteWindow::setNotes()
     }
 }
 
-
-void NoteWindow::on_noteCombo_editTextChanged(const QString &arg1)
+void NoteWindow::saveNotes()
 {
-    note aNote({arg1,notes.at(ui->noteCombo->currentIndex()).text});
-    notes.replace(ui->noteCombo->currentIndex(),aNote);
+    QFile aFile("notes.bin");
+    if(!aFile.open(QIODevice::WriteOnly))
+        return;
+    QDataStream fileStream(&aFile);
+    fileStream.setVersion(QDataStream::Qt_6_9);
+    fileStream.setByteOrder(QDataStream::BigEndian);
+    for(int i=0;i<notes.count();i++)
+    {
+        fileStream<<notes.at(i);
+    }
+    aFile.close();
 }
-
 
 void NoteWindow::on_noteCombo_currentIndexChanged(int index)
 {
+    if(index==-1)
+        return;
     ui->plainTextEdit->setPlainText(notes.at(index).text);
 }
 
@@ -119,5 +134,22 @@ void NoteWindow::on_btn_deleteNote_clicked()
     }
     notes.removeAt(ui->noteCombo->currentIndex());
     ui->noteCombo->removeItem(ui->noteCombo->currentIndex());
+}
+
+void NoteWindow::on_plainTextEdit_textChanged()
+{
+    notes.replace(ui->noteCombo->currentIndex(),{notes.at(ui->noteCombo->currentIndex()).title,ui->plainTextEdit->toPlainText()});
+}
+
+
+void NoteWindow::on_btn_changeName_clicked()
+{
+    bool ok=false;
+    QString str= QInputDialog::getText(this,tr("修改笔记名称"),tr("请输入新名称"),QLineEdit::Normal,ui->noteCombo->currentText(),&ok);
+    if(ok && !str.isEmpty())
+    {
+        ui->noteCombo->setItemText(ui->noteCombo->currentIndex(),str);
+        notes.replace(ui->noteCombo->currentIndex(),{str,notes.at(ui->noteCombo->currentIndex()).text});
+    }
 }
 

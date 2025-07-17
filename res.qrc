@@ -32,5 +32,6 @@
         <file>images/bold.png</file>
         <file>images/italic.png</file>
         <file>images/underline.png</file>
+        <file>images/title.png</file>
     </qresource>
 </RCC>

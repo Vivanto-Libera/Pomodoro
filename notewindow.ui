@@ -123,7 +123,7 @@ QToolBar
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,2,8,1,1,2">
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="3,3,10,1,1,1,3">
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
@@ -150,7 +150,7 @@ QToolBar
       <item>
        <widget class="QComboBox" name="noteCombo">
         <property name="editable">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
         <property name="maxVisibleItems">
          <number>40</number>
@@ -190,6 +190,20 @@ QToolBar
         <property name="icon">
          <iconset resource="res.qrc">
           <normaloff>:/icons/images/delete.png</normaloff>:/icons/images/delete.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="btn_changeName">
+        <property name="toolTip">
+         <string>修改名称</string>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="res.qrc">
+          <normaloff>:/icons/images/title.png</normaloff>:/icons/images/title.png</iconset>
         </property>
        </widget>
       </item>
