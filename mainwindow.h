@@ -25,11 +25,14 @@ public:
 private:
     Ui::MainWindow *ui;
     QTimer *aTimer;
-    QList<QListWidgetItem*> taskListItems;
+    QList<QListWidgetItem> taskListItems;
 
     void init();
     void readData();
+    void readItems();
     void saveData();
+    void saveItems();
+    void setItems();
     bool listVisible;
 private slots:
     void setCurTime();

@@ -6,7 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    if(QFile::exists("data.bin"))
+    if(!QFile::exists("items.bin"))
         init();
     else
         readData();
@@ -20,23 +20,64 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    saveData();
     delete ui;
 }
 
 void MainWindow::init()
 {
     listVisible=true;
-
 }
 
 void MainWindow::readData()
 {
+    readItems();
+    setItems();
+}
 
+void MainWindow::readItems()
+{
+    QFile aFile("items.bin");
+    if(!aFile.open(QIODevice::ReadOnly))
+        return;
+    QDataStream fileStream(&aFile);
+    fileStream.setVersion(QDataStream::Qt_6_9);
+    fileStream.setByteOrder(QDataStream::BigEndian);
+    while(!fileStream.atEnd())
+    {
+        QListWidgetItem *aItem=new QListWidgetItem;
+        fileStream>>*aItem;
+        taskListItems<<*aItem;
+    }
+    aFile.close();
 }
 
 void MainWindow::saveData()
 {
+    saveItems();
+}
 
+void MainWindow::saveItems()
+{
+    QFile aFile("items.bin");
+    if(!aFile.open(QIODevice::WriteOnly))
+        return;
+    QDataStream fileStream(&aFile);
+    fileStream.setVersion(QDataStream::Qt_6_9);
+    fileStream.setByteOrder(QDataStream::BigEndian);
+    for(int i=0;i<taskListItems.count();i++)
+        fileStream<<taskListItems.at(i);
+    aFile.close();
+}
+
+void MainWindow::setItems()
+{
+    for(int i=0;i<taskListItems.count();i++)
+    {
+        QListWidgetItem *aItem= new QListWidgetItem;
+        *aItem=taskListItems.at(i);
+        ui->taskList->addItem(aItem);
+    }
 }
 
 void MainWindow::setCurTime()
@@ -73,13 +114,15 @@ void MainWindow::on_btn_addItem_clicked()
     aItem->setCheckState(Qt::Unchecked);
     aItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
     ui->taskList->addItem(aItem);
-    taskListItems<<aItem;
+    taskListItems<<*aItem;
 }
 
 
 void MainWindow::on_btn_deleteItem_clicked()
 {
     int row= ui->taskList->currentRow();
+    if(row==-1)
+        return;
     QListWidgetItem *aItem=ui->taskList->takeItem(row);
     delete aItem;
     taskListItems.removeAt(row);
