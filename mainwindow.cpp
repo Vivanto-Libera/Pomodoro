@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     if(QFile::exists("data.bin"))
         init();
+    else
+        readData();
     aTimer= new QTimer(this);
     aTimer->setTimerType(Qt::CoarseTimer);
     aTimer->setInterval(500);
@@ -24,6 +26,16 @@ MainWindow::~MainWindow()
 void MainWindow::init()
 {
     listVisible=true;
+
+}
+
+void MainWindow::readData()
+{
+
+}
+
+void MainWindow::saveData()
+{
 
 }
 
@@ -61,6 +73,7 @@ void MainWindow::on_btn_addItem_clicked()
     aItem->setCheckState(Qt::Unchecked);
     aItem->setFlags(Qt::ItemIsSelectable | Qt::ItemIsEditable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
     ui->taskList->addItem(aItem);
+    taskListItems<<aItem;
 }
 
 
@@ -69,6 +82,7 @@ void MainWindow::on_btn_deleteItem_clicked()
     int row= ui->taskList->currentRow();
     QListWidgetItem *aItem=ui->taskList->takeItem(row);
     delete aItem;
+    taskListItems.removeAt(row);
 }
 
 void MainWindow::on_taskList_itemChanged(QListWidgetItem *item)

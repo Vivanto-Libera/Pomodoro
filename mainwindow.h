@@ -6,6 +6,7 @@
 #include <QTimer>
 #include <QTime>
 #include <QListWidgetItem>
+#include <QList>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -23,9 +24,13 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    void init();
-    bool listVisible;
     QTimer *aTimer;
+    QList<QListWidgetItem*> taskListItems;
+
+    void init();
+    void readData();
+    void saveData();
+    bool listVisible;
 private slots:
     void setCurTime();
     void on_btn_listVis_clicked();
