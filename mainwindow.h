@@ -58,6 +58,7 @@ private:
     void setStatus(pomoStatus newStatus);
     void startPomo();
     void pausePomo();
+    void resumePomo();
 private slots:
     void setCurTime();
     void setTimeLab();

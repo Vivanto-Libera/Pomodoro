@@ -146,8 +146,8 @@ void MainWindow::startPomo()
     ui->btn_startOrPause->setToolTip(tr("暂停"));
     setStatus(pomoStatus::Focus);
     pomoTimer->setInterval(curSetting.focusTime*60*1000);
-    pomoTimer->start();
     flushTimer->start();
+    pomoTimer->start();
 }
 
 void MainWindow::pausePomo()
@@ -161,6 +161,16 @@ void MainWindow::pausePomo()
     pomoTimer->stop();
     pomoTimer->setInterval(remainTime);
     flushTimer->stop();
+}
+
+void MainWindow::resumePomo()
+{
+    QIcon aIcon(":/icons/images/ongoing.png");
+    ui->btn_startOrPause->setIcon(aIcon);
+    ui->btn_startOrPause->setToolTip(tr("暂停"));
+    setStatus(lastStatus);
+    flushTimer->start();
+    pomoTimer->start();
 }
 
 void MainWindow::on_btn_listVis_clicked()
@@ -241,6 +251,9 @@ void MainWindow::on_btn_startOrPause_clicked()
     case pomoStatus::Focus:
     case pomoStatus::Relax:
         pausePomo();
+        return;
+    case pomoStatus::Pause:
+        resumePomo();
         return;
     }
 }
