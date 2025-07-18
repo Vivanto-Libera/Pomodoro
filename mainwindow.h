@@ -36,12 +36,13 @@ public:
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
 private:
     Ui::MainWindow *ui;
     QTimer *aTimer;
     QList<aTaskItem> taskListItems;
     pomoStatus curStatus=NoStart;
+    qint8 pomoRepeats=0;
+    const pomoSetting defualtSetting{25,5,20,4};
 
     void init();
     void readData();
@@ -50,8 +51,9 @@ private:
     void saveItems();
     void setItems();
     bool listVisible;
-private slots:
     void setCurTime();
+    void setStatus(pomoStatus newStatus);
+private slots:
     void on_btn_listVis_clicked();
     void on_btn_addItem_clicked();
     void on_btn_deleteItem_clicked();

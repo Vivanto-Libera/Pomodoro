@@ -103,6 +103,25 @@ void MainWindow::setCurTime()
     ui->lab_curTime->setText(str);
 }
 
+void MainWindow::setStatus(pomoStatus newStatus)
+{
+    curStatus=newStatus;
+    switch (newStatus) {
+    case pomoStatus::Focus:
+        ui->lab_pomoStatus->setText(tr("专注中"));
+        break;
+    case pomoStatus::Relax:
+        ui->lab_pomoStatus->setText(tr("休息中"));
+        break;
+    case pomoStatus::Pause:
+        ui->lab_pomoStatus->setText(tr("暂停中"));
+        break;
+    case pomoStatus::NoStart:
+        ui->lab_pomoStatus->setText(tr("未开始"));
+        break;
+    }
+}
+
 void MainWindow::on_btn_listVis_clicked()
 {
     if(listVisible)

@@ -508,7 +508,7 @@ QListWidget::indicator:checked
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="lab_pomoStatu">
+             <widget class="QLabel" name="lab_pomoStatus">
               <property name="font">
                <font>
                 <family>未来圆SC</family>
@@ -516,7 +516,7 @@ QListWidget::indicator:checked
                </font>
               </property>
               <property name="text">
-               <string>暂停中</string>
+               <string>未开始</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignmentFlag::AlignCenter</set>
