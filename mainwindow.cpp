@@ -34,6 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
     flushTimer->setSingleShot(false);
     ui->lab_pomoTime->setText(QString::asprintf("%1").arg(curSetting.focusTime,2,10,QChar('0'))+":00");
     connect(aTimer,SIGNAL(timeout()),this,SLOT(setCurTime()));
+    connect(flushTimer,SIGNAL(timeout()),this,SLOT(setTimeLab()));
 }
 
 MainWindow::~MainWindow()
@@ -111,6 +112,14 @@ void MainWindow::setCurTime()
     ui->lab_curTime->setText(str);
 }
 
+void MainWindow::setTimeLab()
+{
+    qint8 minu=pomoTimer->remainingTime()/1000/60;
+    qint8 sec=pomoTimer->remainingTime()/1000%60;
+    QString str=QString::asprintf("%1").arg(minu,2,10,QChar('0'))+":"+QString::asprintf("%1").arg(sec,2,10,QChar('0'));
+    ui->lab_pomoTime->setText(str);
+}
+
 void MainWindow::setStatus(pomoStatus newStatus)
 {
     curStatus=newStatus;
@@ -128,6 +137,16 @@ void MainWindow::setStatus(pomoStatus newStatus)
         ui->lab_pomoStatus->setText(tr("未开始"));
         break;
     }
+}
+
+void MainWindow::startPomo()
+{
+    QIcon aIcon(":/icons/images/ongoing.png");
+    ui->btn_startOrPause->setIcon(aIcon);
+    setStatus(pomoStatus::Focus);
+    pomoTimer->setInterval(curSetting.focusTime*60*1000);
+    pomoTimer->start();
+    flushTimer->start();
 }
 
 void MainWindow::on_btn_listVis_clicked()

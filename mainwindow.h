@@ -55,8 +55,10 @@ private:
     void setItems();
     bool listVisible;
     void setStatus(pomoStatus newStatus);
+    void startPomo();
 private slots:
     void setCurTime();
+    void setTimeLab();
     void on_btn_listVis_clicked();
     void on_btn_addItem_clicked();
     void on_btn_deleteItem_clicked();
