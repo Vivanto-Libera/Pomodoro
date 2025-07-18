@@ -25,6 +25,15 @@ public:
         QListWidgetItem aItem;
         bool checked;
     };
+    struct pomoSetting
+    {
+        qint8 focusTime;
+        qint8 shortBreak;
+        qint8 longBreak;
+        qint8 repeat;
+    };
+    enum pomoStatus{Focus,Relax,Pause,NoStart};
+
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
@@ -32,6 +41,7 @@ private:
     Ui::MainWindow *ui;
     QTimer *aTimer;
     QList<aTaskItem> taskListItems;
+    pomoStatus curStatus=NoStart;
 
     void init();
     void readData();
