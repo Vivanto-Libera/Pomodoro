@@ -35,6 +35,7 @@
         <file>images/title.png</file>
         <file>images/down.png</file>
         <file>images/up.png</file>
+        <file>images/mute.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/Huxiaobo.ttf</file>

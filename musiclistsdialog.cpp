@@ -22,6 +22,16 @@ MusicListsDialog::MusicListsDialog(QWidget *parent)
     }
 }
 
+QListWidget *MusicListsDialog::getListWidget()
+{
+    return ui->listWidget;
+}
+
+QComboBox *MusicListsDialog::getComboBox()
+{
+    return ui->comboBox;
+}
+
 MusicListsDialog::~MusicListsDialog()
 {
     saveMusic();

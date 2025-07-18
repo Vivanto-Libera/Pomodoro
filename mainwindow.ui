@@ -870,7 +870,7 @@ QMessageBox QPushButton
              </widget>
             </item>
             <item>
-             <widget class="QSlider" name="horizontalSlider">
+             <widget class="QSlider" name="slider_volume">
               <property name="maximum">
                <number>100</number>
               </property>
@@ -910,7 +910,7 @@ QMessageBox QPushButton
              </widget>
             </item>
             <item>
-             <widget class="QSlider" name="horizontalSlider_2">
+             <widget class="QSlider" name="slider_position">
               <property name="maximum">
                <number>100</number>
               </property>
@@ -955,7 +955,7 @@ QMessageBox QPushButton
  </resources>
  <connections>
   <connection>
-   <sender>horizontalSlider</sender>
+   <sender>slider_volume</sender>
    <signal>valueChanged(int)</signal>
    <receiver>lab_volume</receiver>
    <slot>setNum(int)</slot>

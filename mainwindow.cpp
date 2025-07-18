@@ -18,7 +18,10 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    musicDialog= new MusicListsDialog(this);
     settings= new QSettings("Viavnto","Pomodoro");
+    QAudioOutput *audioOutput= new QAudioOutput(this);
+    player->setAudioOutput(audioOutput);
     if(!QFile::exists("items.bin"))
         init();
     else
@@ -37,10 +40,21 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lab_pomoTime->setText(QString::asprintf("%1").arg(curSetting.focusTime,2,10,QChar('0'))+":00");
     ui->lineEdit->setText(motto);
     noteWindow= new NoteWindow(this);
-    musicDialog= new MusicListsDialog(this);
     connect(aTimer,SIGNAL(timeout()),this,SLOT(setCurTime()));
     connect(flushTimer,SIGNAL(timeout()),this,SLOT(setTimeLab()));
     connect(pomoTimer,SIGNAL(timeout()),this,SLOT(do_pomoTimer_timeOut()));
+
+    connect(player,&QMediaPlayer::positionChanged,this,&MainWindow::do_positionChanged);
+    connect(player,&QMediaPlayer::durationChanged,this,&MainWindow::do_durationChanged);
+    connect(player,&QMediaPlayer::sourceChanged,this,&MainWindow::do_sourceChanged);
+    connect(player,&QMediaPlayer::playbackStateChanged,this,&MainWindow::do_stateChanged);
+    connect(musicDialog->getListWidget(),&QListWidget::itemDoubleClicked,this,&MainWindow::do_musicItemDoubleClicked);
+    connect(musicDialog->getComboBox(),&QComboBox::currentIndexChanged,this,&MainWindow::do_musicListChanged);
+    /*if(musicDialog->getListWidget()->count()>0)
+    {
+        player->setSource(getUrlFromItem(musicDialog->getListWidget()->item(0)));
+        ui->lab_musicName->setText((getUrlFromItem(musicDialog->getListWidget()->item(0))).fileName());
+    }*/
 }
 
 MainWindow::~MainWindow()
@@ -72,6 +86,7 @@ void MainWindow::readSetting()
     curSetting.longBreak=settings->value("Long Break").toInt();
     curSetting.repeat=settings->value("Repeats").toInt();
     motto=settings->value("Motto").toString();
+    ui->slider_volume->setValue(settings->value("Volume").toInt());
     settings->endGroup();
 }
 
@@ -122,6 +137,7 @@ void MainWindow::saveSetting()
     settings->setValue("Long Break",curSetting.longBreak);
     settings->setValue("Repeats",curSetting.repeat);
     settings->setValue("Motto",motto);
+    settings->setValue("Volume",ui->slider_volume->value());
     settings->endGroup();
 }
 
@@ -253,6 +269,32 @@ void MainWindow::resetPomo()
     ui->lab_pomoTime->setText(QString::asprintf("%1").arg(curSetting.focusTime,2,10,QChar('0'))+":00");
 }
 
+void MainWindow::nextMusic()
+{
+    if(ui->comboOrder->currentIndex()==1)
+    {
+        player->play();
+        return;
+    }
+    if(ui->comboOrder->currentIndex()==2)
+    {
+        musicIndex=QRandomGenerator::global()->bounded(0,musicDialog->getListWidget()->count());
+        player->setSource(getUrlFromItem(musicDialog->getListWidget()->item(musicIndex)));
+        player->play();
+        return;
+    }
+    if(ui->comboOrder->currentIndex()==0)
+    {
+        musicIndex++;
+        musicIndex=musicIndex>=musicDialog->getListWidget()->count()?0:musicIndex;
+        player->setSource(getUrlFromItem(musicDialog->getListWidget()->item(musicIndex)));
+        player->play();
+        return;
+    }
+}
+
+
+
 void MainWindow::on_btn_listVis_clicked()
 {
     if(listVisible)
@@ -370,5 +412,152 @@ void MainWindow::on_pushButton_3_clicked()
         return;
     }
     musicDialog->show();
+}
+
+void MainWindow::do_stateChanged(QMediaPlayer::PlaybackState state)
+{
+    if(state == QMediaPlayer::PausedState)
+    {
+        ui->btn_play->setIcon(QIcon(":/icons/images/play.png"));
+        ui->btn_play->setToolTip(tr("播放"));
+    }
+    else if(state == QMediaPlayer::PlayingState)
+    {
+        ui->btn_play->setIcon(QIcon(":/icons/images/pause.png"));
+        ui->btn_play->setToolTip(tr("暂停"));
+    }
+    if(playing && (state == QMediaPlayer::StoppedState))
+    {
+        nextMusic();
+    }
+}
+
+void MainWindow::do_sourceChanged(const QUrl &media)
+{
+    ui->lab_musicName->setText(media.fileName());
+}
+
+void MainWindow::do_durationChanged(qint64 duration)
+{
+    ui->slider_position->setMaximum(duration);
+    int secs= duration/1000;
+    int mins= secs/60;
+    secs=secs%60;
+    durationTime=QString::asprintf("%d:%d",mins,secs);
+    ui->lab_musicTime->setText(positionTime+"/"+durationTime);
+}
+
+void MainWindow::do_positionChanged(qint64 position)
+{
+    if(ui->slider_position->isSliderDown())
+        return;
+    ui->slider_position->setSliderPosition(position);
+    int secs= position/1000;
+    int mins= secs/60;
+    secs=secs%60;
+    positionTime=QString::asprintf("%1:%2").arg(mins,2,10,QChar('0')).arg(secs,2,10,QChar('0'));
+    ui->lab_musicTime->setText(positionTime+"/"+durationTime);
+}
+
+void MainWindow::do_musicItemDoubleClicked(QListWidgetItem *aItem)
+{
+    playing=false;
+    player->setSource(getUrlFromItem(aItem));
+    player->play();
+    playing=true;
+    musicIndex=musicDialog->getListWidget()->row(aItem);
+}
+
+void MainWindow::do_musicListChanged(int index)
+{
+    musicIndex=0;
+    playing=false;
+    player->stop();
+    if(musicDialog->getListWidget()->count()==0)
+        player->setSource(QUrl());
+    else
+        player->setSource(getUrlFromItem(musicDialog->getListWidget()->item(0)));
+}
+
+
+
+QUrl MainWindow::getUrlFromItem(QListWidgetItem *item)
+{
+    QVariant itemData= item->data(Qt::UserRole);
+    QUrl source= itemData.value<QUrl>();
+    return source;
+}
+
+
+void MainWindow::on_btn_previous_clicked()
+{
+    int row=musicDialog->getListWidget()->currentRow();
+    row--;
+    row =row<0?musicDialog->getListWidget()->count()-1:row;
+    musicDialog->getListWidget()->setCurrentRow(row);
+    playing=false;
+    player->setSource(getUrlFromItem(musicDialog->getListWidget()->currentItem()));
+    player->play();
+    playing=true;
+}
+
+
+void MainWindow::on_btn_next_clicked()
+{
+    nextMusic();
+}
+
+
+void MainWindow::on_btn_play_clicked()
+{
+    if(playing==true)
+    {
+        player->pause();
+        playing=false;
+    }
+    else
+    {
+        player->play();
+        playing=true;
+    }
+}
+
+
+void MainWindow::on_comboOrder_currentIndexChanged(int index)
+{
+    if(index==0)
+    {
+        ui->btn_previous->setEnabled(true);
+        ui->btn_next->setEnabled(true);
+    }
+    else if(index==1)
+    {
+        ui->btn_previous->setEnabled(false);
+        ui->btn_next->setEnabled(false);
+    }
+    else if(index==2)
+    {
+        ui->btn_previous->setEnabled(false);
+        ui->btn_next->setEnabled(true);
+    }
+}
+
+
+void MainWindow::on_slider_volume_valueChanged(int value)
+{
+    if(value==0)
+    {
+        ui->labPic_sound->setPixmap(QPixmap(":/icons/images/mute.png"));
+        player->audioOutput()->setVolume(0);
+        return;
+    }
+    ui->labPic_sound->setPixmap(QPixmap(":/icons/images/speaker.png"));
+    player->audioOutput()->setVolume(value/100.0);
+}
+
+
+void MainWindow::on_slider_position_valueChanged(int value)
+{
+    player->setPosition(value);
 }
 

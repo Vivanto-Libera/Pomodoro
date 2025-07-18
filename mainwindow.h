@@ -56,10 +56,12 @@ private:
     NoteWindow *noteWindow;
 
     MusicListsDialog *musicDialog;
-    QMediaPlayer *player;
+    QMediaPlayer *player=new QMediaPlayer(this);
     QString durationTime;
     QString positionTime;
-    QUrl getUrlFromItem(QListWidgetItem *Item);
+    QUrl getUrlFromItem(QListWidgetItem *item);
+    bool playing;
+    int musicIndex=0;
 
     void init();
     void readData();
@@ -75,6 +77,7 @@ private:
     void pausePomo();
     void resumePomo();
     void resetPomo();
+    void nextMusic();
 private slots:
     void setCurTime();
     void setTimeLab();
@@ -88,5 +91,18 @@ private slots:
     void on_btn_reset_clicked();
     void on_btn_setting_clicked();
     void on_pushButton_3_clicked();
+
+    void do_stateChanged(QMediaPlayer::PlaybackState state);
+    void do_sourceChanged(const QUrl &media);
+    void do_durationChanged(qint64 duration);
+    void do_positionChanged(qint64 position);
+    void do_musicItemDoubleClicked(QListWidgetItem *aItem);
+    void do_musicListChanged(int index);
+    void on_btn_previous_clicked();
+    void on_btn_next_clicked();
+    void on_btn_play_clicked();
+    void on_comboOrder_currentIndexChanged(int index);
+    void on_slider_volume_valueChanged(int value);
+    void on_slider_position_valueChanged(int value);
 };
 #endif // MAINWINDOW_H

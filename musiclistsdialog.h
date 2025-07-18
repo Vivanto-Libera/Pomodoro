@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QListWidgetItem>
 #include <QSettings>
+#include <QComboBox>
 
 namespace Ui {
 class MusicListsDialog;
@@ -17,6 +18,8 @@ public:
     QStringList listNames;
     QList<QList<QUrl>> musicLists;
     explicit MusicListsDialog(QWidget *parent = nullptr);
+    QListWidget* getListWidget();
+    QComboBox* getComboBox();
     ~MusicListsDialog();
 
 private slots:
