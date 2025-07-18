@@ -43,6 +43,7 @@ private:
     QTimer *flushTimer;
     QList<aTaskItem> taskListItems;
     pomoStatus curStatus=NoStart;
+    pomoStatus lastStatus;
     qint8 pomoRepeats=0;
     const pomoSetting defualtSetting{25,5,20,4};
     pomoSetting curSetting;
@@ -56,6 +57,7 @@ private:
     bool listVisible;
     void setStatus(pomoStatus newStatus);
     void startPomo();
+    void pausePomo();
 private slots:
     void setCurTime();
     void setTimeLab();
