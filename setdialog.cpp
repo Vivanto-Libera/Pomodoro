@@ -1,14 +1,10 @@
 #include "setdialog.h"
 #include "ui_setdialog.h"
 
-SetDialog::SetDialog(QWidget *parent,MainWindow::pomoSetting aSetting)
+SetDialog::SetDialog(QWidget *parent)
     : QDialog(parent),ui(new Ui::SetDialog)
 {
     ui->setupUi(this);
-    ui->spin_focusTime->setValue(aSetting.focusTime);
-    ui->spin_ShortRelax->setValue(aSetting.shortBreak);
-    ui->spin_longRelax->setValue(aSetting.longBreak);
-    ui->spin_repeatTimes->setValue(aSetting.repeat);
 }
 
 MainWindow::pomoSetting SetDialog::setting()
@@ -21,7 +17,24 @@ MainWindow::pomoSetting SetDialog::setting()
     return newSetting;
 }
 
+void SetDialog::ini(MainWindow::pomoSetting aSetting)
+{
+    ui->spin_focusTime->setValue(aSetting.focusTime);
+    ui->spin_ShortRelax->setValue(aSetting.shortBreak);
+    ui->spin_longRelax->setValue(aSetting.longBreak);
+    ui->spin_repeatTimes->setValue(aSetting.repeat);
+}
+
 SetDialog::~SetDialog()
 {
     delete ui;
 }
+
+void SetDialog::on_btn_reset_clicked()
+{
+    ui->spin_focusTime->setValue(25);
+    ui->spin_ShortRelax->setValue(5);
+    ui->spin_longRelax->setValue(20);
+    ui->spin_repeatTimes->setValue(4);
+}
+

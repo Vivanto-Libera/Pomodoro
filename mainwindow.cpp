@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <setdialog.h>
 
 QDataStream &operator<<(QDataStream &out,const MainWindow::aTaskItem &aItem)
 {
@@ -47,7 +48,7 @@ MainWindow::~MainWindow()
 void MainWindow::init()
 {
     listVisible=true;
-    curSetting=defualtSetting;
+    curSetting={25,5,20,4};
 }
 
 void MainWindow::readData()
@@ -211,7 +212,7 @@ void MainWindow::resumePomo()
 
 void MainWindow::resetPomo()
 {
-    QIcon aIcon(":/icons/images/ongoing.png");
+    QIcon aIcon(":/icons/images/pomodoro.png");
     ui->btn_startOrPause->setIcon(aIcon);
     ui->btn_startOrPause->setToolTip(tr("开始"));
     setStatus(pomoStatus::NoStart);
@@ -310,5 +311,19 @@ void MainWindow::on_btn_startOrPause_clicked()
 void MainWindow::on_btn_reset_clicked()
 {
     resetPomo();
+}
+
+
+void MainWindow::on_btn_setting_clicked()
+{
+    SetDialog *aDialog=new SetDialog(this);
+    aDialog->ini(curSetting);
+    int ret= aDialog->exec();
+    if(ret == QDialog::Accepted)
+    {
+        curSetting=aDialog->setting();
+        resetPomo();
+    }
+    delete aDialog;
 }
 

@@ -45,7 +45,6 @@ private:
     pomoStatus curStatus=NoStart;
     pomoStatus lastStatus;
     qint8 pomoRepeats=0;
-    const pomoSetting defualtSetting{25,5,20,4};
     pomoSetting curSetting;
 
     void init();
@@ -71,5 +70,6 @@ private slots:
     void on_btn_note_clicked();
     void on_btn_startOrPause_clicked();
     void on_btn_reset_clicked();
+    void on_btn_setting_clicked();
 };
 #endif // MAINWINDOW_H

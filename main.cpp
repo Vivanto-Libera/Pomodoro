@@ -3,11 +3,13 @@
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>
+#include <QFontDatabase>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-
+    int fontId= QFontDatabase::addApplicationFont(":/fonts/fonts/Huxiaobo.ttf");
+    fontId= QFontDatabase::addApplicationFont(":/fonts/fonts/Weilaiyuan.ttf");
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
     for (const QString &locale : uiLanguages) {

@@ -13,9 +13,13 @@ class SetDialog : public QDialog
     Q_OBJECT
 
 public:
-    explicit SetDialog(QWidget *parent = nullptr,MainWindow::pomoSetting aSetting={25,5,20,4});
+    explicit SetDialog(QWidget *parent = nullptr);
     MainWindow::pomoSetting setting();
+    void ini(MainWindow::pomoSetting aSetting);
     ~SetDialog();
+
+private slots:
+    void on_btn_reset_clicked();
 
 private:
     Ui::SetDialog *ui;
