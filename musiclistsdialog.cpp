@@ -5,22 +5,21 @@
 #include <QFileDialog>
 #include <QInputDialog>
 
-QDataStream &operator<<(QDataStream &out,const MusicListsDialog::musicList aList)
-{
-    out<<aList.title<<aList.music;
-    return out;
-}
-QDataStream &operator>>(QDataStream &in,MusicListsDialog::musicList aList)
-{
-    in>>aList.title>>aList.music;
-    return in;
-}
-
 MusicListsDialog::MusicListsDialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::MusicListsDialog)
 {
     ui->setupUi(this);
+    settings= new QSettings("Viavnto","Pomodoro");
+    if(!QFile::exists("music.bin"))
+    {
+        init();
+    }
+    else
+    {
+        readMusic();
+        setMusic();
+    }
 }
 
 MusicListsDialog::~MusicListsDialog()
@@ -31,8 +30,8 @@ MusicListsDialog::~MusicListsDialog()
 
 void MusicListsDialog::init()
 {
-    musicList aList;
-    aList.title=tr("初始歌单");
+    listNames<<tr("初始歌单");
+    QList<QUrl> aList;
     musicLists<<aList;
     setMusic();
 }
@@ -47,16 +46,22 @@ void MusicListsDialog::readMusic()
     fileStream.setByteOrder(QDataStream::BigEndian);
     while(!fileStream.atEnd())
     {
-        musicList aList;
+        QList<QUrl> aList;
         fileStream>>aList;
         musicLists<<aList;
     }
     aFile.close();
+    settings->beginGroup("pomodoro");
+    listNames=settings->value("List Name").toStringList();
+    settings->endGroup();
 }
 
 void MusicListsDialog::setMusic()
 {
-    ui->comboBox->addItem(musicLists.at(0).title);
+    for(int i=0;i<listNames.count();i++)
+    {
+        ui->comboBox->addItem(listNames.at(i));
+    }
 }
 
 void MusicListsDialog::saveMusic()
@@ -72,6 +77,9 @@ void MusicListsDialog::saveMusic()
         fileStream<<musicLists.at(i);
     }
     aFile.close();
+    settings->beginGroup("pomodoro");
+    settings->setValue("List Name",listNames);
+    settings->endGroup();
 }
 
 void MusicListsDialog::on_comboBox_currentIndexChanged(int index)
@@ -79,10 +87,11 @@ void MusicListsDialog::on_comboBox_currentIndexChanged(int index)
     if(index==-1)
         return;
     ui->listWidget->clear();
-    for(int i=0;i<musicLists.at(index).music.count();i++)
+    for(int i=0;i<musicLists.at(index).count();i++)
     {
-        QListWidgetItem *aItem=new QListWidgetItem;
-        *aItem=musicLists.at(index).music.at(i);
+        QListWidgetItem *aItem=new QListWidgetItem(musicLists.at(index).at(i).fileName());
+        aItem->setIcon(QIcon(":/icons/images/music.png"));
+        aItem->setData(Qt::UserRole,musicLists.at(index).at(i));
         ui->listWidget->addItem(aItem);
     }
 }
@@ -90,10 +99,10 @@ void MusicListsDialog::on_comboBox_currentIndexChanged(int index)
 
 void MusicListsDialog::on_btn_add_clicked()
 {
-    musicList aList;
-    aList.title=tr("未命名歌单");
+    ui->comboBox->addItem(tr("未命名歌单"));
+    listNames<<tr("未命名歌单");
+    QList<QUrl> aList;
     musicLists<<aList;
-    ui->comboBox->addItem(musicLists.at(musicLists.count()-1).title);
 }
 
 
@@ -112,6 +121,7 @@ void MusicListsDialog::on_btn_delete_clicked()
         return;
     }
     musicLists.removeAt(ui->comboBox->currentIndex());
+    listNames.removeAt(ui->comboBox->currentIndex());
     ui->comboBox->removeItem(ui->comboBox->currentIndex());
 }
 
@@ -123,7 +133,7 @@ void MusicListsDialog::on_btn_changeName_clicked()
     if(ok && !str.isEmpty())
     {
         ui->comboBox->setItemText(ui->comboBox->currentIndex(),str);
-        musicLists.replace(ui->comboBox->currentIndex(),{str,musicLists.at(ui->comboBox->currentIndex()).music});
+        listNames.replace(ui->comboBox->currentIndex(),str);
     }
 }
 
@@ -144,7 +154,9 @@ void MusicListsDialog::on_btn_addMusic_clicked()
         aItem->setIcon(QIcon(":/icons/images/music.png"));
         aItem->setData(Qt::UserRole,QUrl::fromLocalFile(aFile));
         ui->listWidget->addItem(aItem);
-        musicLists.value(ui->comboBox->currentIndex()).music.push_back(*aItem);
+        QUrl aUrl=aItem->data(Qt::UserRole).toUrl();
+        musicLists[ui->comboBox->currentIndex()].append(aUrl);
+        qDebug()<<musicLists.value(ui->comboBox->currentIndex()).count();
     }
 }
 
@@ -156,7 +168,7 @@ void MusicListsDialog::on_btn_deleteMusic_clicked()
         return;
     QListWidgetItem *aItem=ui->listWidget->takeItem(index);
     delete aItem;
-    musicLists.value(ui->comboBox->currentIndex()).music.removeAt(index);
+    //musicLists.value(ui->comboBox->currentIndex()).music.removeAt(index);
 
 }
 

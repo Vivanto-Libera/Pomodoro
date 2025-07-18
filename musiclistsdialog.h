@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QListWidgetItem>
+#include <QSettings>
 
 namespace Ui {
 class MusicListsDialog;
@@ -13,12 +14,8 @@ class MusicListsDialog : public QDialog
     Q_OBJECT
 
 public:
-    struct musicList
-    {
-        QString title;
-        QList<QListWidgetItem> music;
-    };
-    QList<musicList> musicLists;
+    QStringList listNames;
+    QList<QList<QUrl>> musicLists;
     explicit MusicListsDialog(QWidget *parent = nullptr);
     ~MusicListsDialog();
 
@@ -37,6 +34,7 @@ private slots:
 
 private:
     Ui::MusicListsDialog *ui;
+    QSettings *settings;
     void init();
     void readMusic();
     void setMusic();
