@@ -13,15 +13,18 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    notewindow.cpp
+    notewindow.cpp \
+    setdialog.cpp
 
 HEADERS += \
     mainwindow.h \
-    notewindow.h
+    notewindow.h \
+    setdialog.h
 
 FORMS += \
     mainwindow.ui \
-    notewindow.ui
+    notewindow.ui \
+    setdialog.ui
 
 TRANSLATIONS += \
     Pomodoro_zh_CN.ts

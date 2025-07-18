@@ -50,43 +50,6 @@ QComboBox
 {
 	background-color:rgb(255,99,71);
 }
-QSlider::handle
-{
-	width:18px;
-	height:18px;
-	margin:-5px 0;
-	background-color:rgb(255,99,71);
-	border-radius:4px;
-	border: 1px solid #8B0000;
-}
-QSlider::groove
-{
-	height:8px;
-	background-color:rgb(175,240,240);
-	border-radius:4px;
-}
-QSlider::sub-page
-{
-	background-color:#FF6347;
-	border-radius:4px;
-}
-QListWidget::item:hover
-{
-	background-color:rgb(250,215,210);
-}
-QListWidget::item:selected
-{
-	background-color:rgb(240,180,230);
-}
-QListWidget::indicator
-{
-	background-color:rgb(230,200,195);
-	border-radius:2px;
-}
-QListWidget::indicator:checked
-{
-	background-color:rgb(245,185,180);
-}
 QToolBar
 {
 	spacing:15px;
