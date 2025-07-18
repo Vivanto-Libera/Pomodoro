@@ -35,11 +35,6 @@ public:
         qint8 longBreak;
         qint8 repeat;
     };
-    struct musicList
-    {
-        QString title;
-        QList<QListWidgetItem> music;
-    };
 
     enum pomoStatus{Focus,Relax,Pause,NoStart};
 
@@ -60,7 +55,6 @@ private:
     NoteWindow *noteWindow;
 
     QMediaPlayer *player;
-    QList<musicList> musicLists;
     QString durationTime;
     QString positionTime;
     QUrl getUrlFromItem(QListWidgetItem *Item);
