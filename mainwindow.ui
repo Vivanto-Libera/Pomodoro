@@ -867,6 +867,9 @@ QListWidget::indicator:checked
               <property name="maximum">
                <number>100</number>
               </property>
+              <property name="value">
+               <number>50</number>
+              </property>
               <property name="orientation">
                <enum>Qt::Orientation::Horizontal</enum>
               </property>
@@ -881,7 +884,7 @@ QListWidget::indicator:checked
                </size>
               </property>
               <property name="text">
-               <string>100</string>
+               <string>50</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -951,12 +954,12 @@ QListWidget::indicator:checked
    <slot>setNum(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>706</x>
-     <y>441</y>
+     <x>751</x>
+     <y>615</y>
     </hint>
     <hint type="destinationlabel">
-     <x>771</x>
-     <y>454</y>
+     <x>787</x>
+     <y>624</y>
     </hint>
    </hints>
   </connection>
