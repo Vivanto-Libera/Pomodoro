@@ -8,6 +8,7 @@
 #include <QListWidgetItem>
 #include <QList>
 #include <notewindow.h>
+#include <musiclistsdialog.h>
 #include <QSettings>
 #include <QtMultimediaWidgets>
 #include <QtMultimedia>
@@ -54,6 +55,7 @@ private:
     QString motto=tr("此处可输入座右铭");
     NoteWindow *noteWindow;
 
+    MusicListsDialog *musicDialog;
     QMediaPlayer *player;
     QString durationTime;
     QString positionTime;
@@ -85,5 +87,6 @@ private slots:
     void on_btn_startOrPause_clicked();
     void on_btn_reset_clicked();
     void on_btn_setting_clicked();
+    void on_pushButton_3_clicked();
 };
 #endif // MAINWINDOW_H

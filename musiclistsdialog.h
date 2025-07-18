@@ -27,6 +27,14 @@ private slots:
 
     void on_btn_add_clicked();
 
+    void on_btn_delete_clicked();
+
+    void on_btn_changeName_clicked();
+
+    void on_btn_addMusic_clicked();
+
+    void on_btn_deleteMusic_clicked();
+
 private:
     Ui::MusicListsDialog *ui;
     void init();

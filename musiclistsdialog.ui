@@ -71,6 +71,10 @@ QListWidget
 QLabel
 {
 	color:black;
+}
+QInputDialog QPushButton
+{
+	width:60px;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">

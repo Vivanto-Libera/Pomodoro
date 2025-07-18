@@ -37,6 +37,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lab_pomoTime->setText(QString::asprintf("%1").arg(curSetting.focusTime,2,10,QChar('0'))+":00");
     ui->lineEdit->setText(motto);
     noteWindow= new NoteWindow(this);
+    musicDialog= new MusicListsDialog(this);
     connect(aTimer,SIGNAL(timeout()),this,SLOT(setCurTime()));
     connect(flushTimer,SIGNAL(timeout()),this,SLOT(setTimeLab()));
     connect(pomoTimer,SIGNAL(timeout()),this,SLOT(do_pomoTimer_timeOut()));
@@ -356,5 +357,16 @@ void MainWindow::on_btn_setting_clicked()
         resetPomo();
     }
     delete aDialog;
+}
+
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    if(musicDialog->isVisible())
+    {
+        QMessageBox::critical(this,tr("错误"),tr("歌单已打开"));
+        return;
+    }
+    musicDialog->show();
 }
 
