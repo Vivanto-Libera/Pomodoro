@@ -118,6 +118,14 @@ QToolButton:checked
 QToolBar
 {
 	padding:3px;
+}
+QMessageBox QPushButton
+{
+	width:60px;
+}
+QInputDialog QPushButton
+{
+	width:60px;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -231,7 +239,7 @@ QToolBar
    <property name="minimumSize">
     <size>
      <width>0</width>
-     <height>50</height>
+     <height>0</height>
     </size>
    </property>
    <property name="maximumSize">
