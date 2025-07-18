@@ -22,10 +22,17 @@ MainWindow::MainWindow(QWidget *parent)
     else
         readData();
     aTimer= new QTimer(this);
-    aTimer->setTimerType(Qt::CoarseTimer);
     aTimer->setInterval(500);
     aTimer->setSingleShot(false);
     aTimer->start();
+    pomoTimer= new QTimer(this);
+    pomoTimer->stop();
+    pomoTimer->setSingleShot(true);
+    flushTimer= new QTimer(this);
+    flushTimer->stop();
+    flushTimer->setInterval(500);
+    flushTimer->setSingleShot(false);
+    ui->lab_pomoTime->setText(QString::asprintf("%1").arg(curSetting.focusTime,2,10,QChar('0'))+":00");
     connect(aTimer,SIGNAL(timeout()),this,SLOT(setCurTime()));
 }
 
@@ -38,6 +45,7 @@ MainWindow::~MainWindow()
 void MainWindow::init()
 {
     listVisible=true;
+    curSetting=defualtSetting;
 }
 
 void MainWindow::readData()
@@ -188,5 +196,11 @@ void MainWindow::on_btn_note_clicked()
     NoteWindow *noteWindow= new NoteWindow(this);
     noteWindow->setAttribute(Qt::WA_DeleteOnClose);
     noteWindow->show();
+}
+
+
+void MainWindow::on_btn_startOrPause_clicked()
+{
+
 }
 
