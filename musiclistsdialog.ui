@@ -167,10 +167,42 @@ QInputDialog QPushButton
        </property>
       </widget>
      </item>
+     <item>
+      <widget class="QPushButton" name="btn_up">
+       <property name="toolTip">
+        <string>向上移动</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="res.qrc">
+         <normaloff>:/icons/images/up.png</normaloff>:/icons/images/up.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="btn_down">
+       <property name="toolTip">
+        <string>向下移动</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="res.qrc">
+         <normaloff>:/icons/images/down.png</normaloff>:/icons/images/down.png</iconset>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>
-    <widget class="QListWidget" name="listWidget"/>
+    <widget class="QListWidget" name="listWidget">
+     <property name="toolTip">
+      <string>向上移动</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

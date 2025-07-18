@@ -32,6 +32,8 @@ void MusicListsDialog::init()
 {
     listNames<<tr("初始歌单");
     QList<QUrl> aList;
+    QUrl aUrl;
+    aList<<aUrl;
     musicLists<<aList;
     setMusic();
 }
@@ -87,7 +89,7 @@ void MusicListsDialog::on_comboBox_currentIndexChanged(int index)
     if(index==-1)
         return;
     ui->listWidget->clear();
-    for(int i=0;i<musicLists.at(index).count();i++)
+    for(int i=1;i<musicLists.at(index).count();i++)
     {
         QListWidgetItem *aItem=new QListWidgetItem(musicLists.at(index).at(i).fileName());
         aItem->setIcon(QIcon(":/icons/images/music.png"));
@@ -102,7 +104,10 @@ void MusicListsDialog::on_btn_add_clicked()
     ui->comboBox->addItem(tr("未命名歌单"));
     listNames<<tr("未命名歌单");
     QList<QUrl> aList;
+    QUrl aUrl;
+    aList<<aUrl;
     musicLists<<aList;
+    ui->comboBox->setCurrentIndex(ui->comboBox->count()-1);
 }
 
 
@@ -120,7 +125,7 @@ void MusicListsDialog::on_btn_delete_clicked()
         QMessageBox::critical(this,tr("删除失败"),tr("无法删除最后一个歌单"));
         return;
     }
-    musicLists.removeAt(ui->comboBox->currentIndex());
+    musicLists.removeAt(ui->comboBox->currentIndex()+1);
     listNames.removeAt(ui->comboBox->currentIndex());
     ui->comboBox->removeItem(ui->comboBox->currentIndex());
 }
@@ -156,7 +161,6 @@ void MusicListsDialog::on_btn_addMusic_clicked()
         ui->listWidget->addItem(aItem);
         QUrl aUrl=aItem->data(Qt::UserRole).toUrl();
         musicLists[ui->comboBox->currentIndex()].append(aUrl);
-        qDebug()<<musicLists.value(ui->comboBox->currentIndex()).count();
     }
 }
 
@@ -168,7 +172,31 @@ void MusicListsDialog::on_btn_deleteMusic_clicked()
         return;
     QListWidgetItem *aItem=ui->listWidget->takeItem(index);
     delete aItem;
-    //musicLists.value(ui->comboBox->currentIndex()).music.removeAt(index);
+    musicLists[ui->comboBox->currentIndex()].removeAt(index+1);
 
+}
+
+
+void MusicListsDialog::on_btn_up_clicked()
+{
+    int index = ui->listWidget->currentRow();
+    if(index<=0)
+        return;
+    QListWidgetItem *aItem=ui->listWidget->takeItem(index);
+    ui->listWidget->insertItem(index-1,aItem);
+    ui->listWidget->setCurrentItem(aItem);
+    musicLists[ui->comboBox->currentIndex()].swapItemsAt(index+1,index);
+}
+
+
+void MusicListsDialog::on_btn_down_clicked()
+{
+    int index = ui->listWidget->currentRow();
+    if(index==ui->listWidget->count()-1)
+        return;
+    QListWidgetItem *aItem=ui->listWidget->takeItem(index);
+    ui->listWidget->insertItem(index+1,aItem);
+    ui->listWidget->setCurrentItem(aItem);
+    musicLists[ui->comboBox->currentIndex()].swapItemsAt(index+1,index+2);
 }
 

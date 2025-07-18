@@ -32,6 +32,10 @@ private slots:
 
     void on_btn_deleteMusic_clicked();
 
+    void on_btn_up_clicked();
+
+    void on_btn_down_clicked();
+
 private:
     Ui::MusicListsDialog *ui;
     QSettings *settings;

@@ -45,6 +45,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
+    delete noteWindow;
+    delete musicDialog;
     saveData();
     delete ui;
 }
