@@ -59,14 +59,17 @@ private:
     void startPomo();
     void pausePomo();
     void resumePomo();
+    void resetPomo();
 private slots:
     void setCurTime();
     void setTimeLab();
+    void do_pomoTimer_timeOut();
     void on_btn_listVis_clicked();
     void on_btn_addItem_clicked();
     void on_btn_deleteItem_clicked();
     void on_taskList_itemChanged(QListWidgetItem *item);
     void on_btn_note_clicked();
     void on_btn_startOrPause_clicked();
+    void on_btn_reset_clicked();
 };
 #endif // MAINWINDOW_H

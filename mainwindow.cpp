@@ -35,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lab_pomoTime->setText(QString::asprintf("%1").arg(curSetting.focusTime,2,10,QChar('0'))+":00");
     connect(aTimer,SIGNAL(timeout()),this,SLOT(setCurTime()));
     connect(flushTimer,SIGNAL(timeout()),this,SLOT(setTimeLab()));
+    connect(pomoTimer,SIGNAL(timeout()),this,SLOT(do_pomoTimer_timeOut()));
 }
 
 MainWindow::~MainWindow()
@@ -120,6 +121,41 @@ void MainWindow::setTimeLab()
     ui->lab_pomoTime->setText(str);
 }
 
+void MainWindow::do_pomoTimer_timeOut()
+{
+    QApplication::beep();
+    if(curStatus==pomoStatus::Focus)
+    {
+        setStatus(pomoStatus::Relax);
+        pomoRepeats++;
+        if(pomoRepeats!=curSetting.repeat)
+        {
+            pomoTimer->setInterval(curSetting.shortBreak*60*1000);
+        }
+        else
+        {
+            pomoTimer->setInterval(curSetting.longBreak*60*1000);
+        }
+        pomoTimer->start();
+        return;
+    }
+    else
+    {
+        if(pomoRepeats==curSetting.repeat)
+        {
+            resetPomo();
+            return;
+        }
+        else
+        {
+            setStatus(pomoStatus::Focus);
+            pomoTimer->setInterval(curSetting.focusTime*60*1000);
+            pomoTimer->start();
+            return;
+        }
+    }
+}
+
 void MainWindow::setStatus(pomoStatus newStatus)
 {
     curStatus=newStatus;
@@ -171,6 +207,18 @@ void MainWindow::resumePomo()
     setStatus(lastStatus);
     flushTimer->start();
     pomoTimer->start();
+}
+
+void MainWindow::resetPomo()
+{
+    QIcon aIcon(":/icons/images/ongoing.png");
+    ui->btn_startOrPause->setIcon(aIcon);
+    ui->btn_startOrPause->setToolTip(tr("开始"));
+    setStatus(pomoStatus::NoStart);
+    flushTimer->stop();
+    pomoTimer->stop();
+    pomoRepeats=0;
+    ui->lab_pomoTime->setText(QString::asprintf("%1").arg(curSetting.focusTime,2,10,QChar('0'))+":00");
 }
 
 void MainWindow::on_btn_listVis_clicked()
@@ -256,5 +304,11 @@ void MainWindow::on_btn_startOrPause_clicked()
         resumePomo();
         return;
     }
+}
+
+
+void MainWindow::on_btn_reset_clicked()
+{
+    resetPomo();
 }
 

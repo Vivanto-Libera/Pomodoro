@@ -566,7 +566,7 @@ QListWidget::indicator:checked
                </widget>
               </item>
               <item>
-               <widget class="QPushButton" name="btn_restart">
+               <widget class="QPushButton" name="btn_reset">
                 <property name="toolTip">
                  <string>重置</string>
                 </property>
