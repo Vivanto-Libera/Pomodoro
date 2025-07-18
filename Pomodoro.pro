@@ -13,16 +13,19 @@ CONFIG += c++17
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    musiclistsdialog.cpp \
     notewindow.cpp \
     setdialog.cpp
 
 HEADERS += \
     mainwindow.h \
+    musiclistsdialog.h \
     notewindow.h \
     setdialog.h
 
 FORMS += \
     mainwindow.ui \
+    musiclistsdialog.ui \
     notewindow.ui \
     setdialog.ui
 

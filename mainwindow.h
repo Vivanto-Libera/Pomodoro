@@ -9,6 +9,8 @@
 #include <QList>
 #include <notewindow.h>
 #include <QSettings>
+#include <QtMultimediaWidgets>
+#include <QtMultimedia>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -33,6 +35,12 @@ public:
         qint8 longBreak;
         qint8 repeat;
     };
+    struct musicList
+    {
+        QString title;
+        QList<QListWidgetItem> music;
+    };
+
     enum pomoStatus{Focus,Relax,Pause,NoStart};
 
     MainWindow(QWidget *parent = nullptr);
@@ -49,6 +57,13 @@ private:
     pomoSetting curSetting;
     QSettings *settings;
     QString motto=tr("此处可输入座右铭");
+    NoteWindow *noteWindow;
+
+    QMediaPlayer *player;
+    QList<musicList> musicLists;
+    QString durationTime;
+    QString positionTime;
+    QUrl getUrlFromItem(QListWidgetItem *Item);
 
     void init();
     void readData();

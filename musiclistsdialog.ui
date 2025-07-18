@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MusicListsDialog</class>
+ <widget class="QDialog" name="MusicListsDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton
+{
+	background-color: rgb(255,99,71);
+	border-radius : 8px;
+	border: 2px solid rgb(105,105,105);
+	transition: all 0.2s ease;
+}
+QPushButton:hover
+{
+	background-color: #ff7a5a;
+	transform: scale(1.03);
+}
+QPushButton:pressed
+{
+	background-color:#ffb3a3;
+	transform: scale(0.97);
+	border-color:rgb(95,95,95);
+}
+QPushButton:disabled
+{
+	background-color: #FFA07A;
+}
+QDialog
+{
+	background-color: rgb(255,228,225);
+}
+QLineEdit
+{
+	background-color:transparent;
+	border:2px solid gray;
+	border-radius:6px;
+}
+QComboBox
+{
+	background-color:rgb(255,99,71);
+}
+QListWidget::item:hover
+{
+	background-color:rgb(250,215,210);
+}
+QListWidget::item:selected
+{
+	background-color:rgb(240,180,230);
+}
+QListWidget::indicator
+{
+	background-color:rgb(230,200,195);
+	border-radius:2px;
+}
+QListWidget::indicator:checked
+{
+	background-color:rgb(245,185,180);
+}</string>
+  </property>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>30</y>
+     <width>80</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>30</y>
+     <width>80</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>250</x>
+     <y>30</y>
+     <width>80</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PushButton</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="comboBox">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>80</y>
+     <width>72</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

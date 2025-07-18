@@ -36,6 +36,7 @@ MainWindow::MainWindow(QWidget *parent)
     flushTimer->setSingleShot(false);
     ui->lab_pomoTime->setText(QString::asprintf("%1").arg(curSetting.focusTime,2,10,QChar('0'))+":00");
     ui->lineEdit->setText(motto);
+    noteWindow= new NoteWindow(this);
     connect(aTimer,SIGNAL(timeout()),this,SLOT(setCurTime()));
     connect(flushTimer,SIGNAL(timeout()),this,SLOT(setTimeLab()));
     connect(pomoTimer,SIGNAL(timeout()),this,SLOT(do_pomoTimer_timeOut()));
@@ -312,8 +313,11 @@ void MainWindow::on_taskList_itemChanged(QListWidgetItem *item)
 
 void MainWindow::on_btn_note_clicked()
 {
-    NoteWindow *noteWindow= new NoteWindow(this);
-    noteWindow->setAttribute(Qt::WA_DeleteOnClose);
+    if(noteWindow->isVisible())
+    {
+        QMessageBox::critical(this,tr("错误"),tr("笔记已打开"));
+        return;
+    }
     noteWindow->show();
 }
 

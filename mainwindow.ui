@@ -97,6 +97,10 @@ QListWidget::indicator
 QListWidget::indicator:checked
 {
 	background-color:rgb(245,185,180);
+}
+QMessageBox QPushButton
+{
+	width:60px;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
