@@ -8,6 +8,7 @@
 #include <QListWidgetItem>
 #include <QList>
 #include <notewindow.h>
+#include <QSettings>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -46,12 +47,16 @@ private:
     pomoStatus lastStatus;
     qint8 pomoRepeats=0;
     pomoSetting curSetting;
+    QSettings *settings;
+    QString motto=tr("此处可输入座右铭");
 
     void init();
     void readData();
+    void readSetting();
     void readItems();
     void saveData();
     void saveItems();
+    void saveSetting();
     void setItems();
     bool listVisible;
     void setStatus(pomoStatus newStatus);

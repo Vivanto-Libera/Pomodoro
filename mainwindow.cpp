@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    settings= new QSettings("Viavnto","Pomodoro");
     if(!QFile::exists("items.bin"))
         init();
     else
@@ -34,6 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
     flushTimer->setInterval(500);
     flushTimer->setSingleShot(false);
     ui->lab_pomoTime->setText(QString::asprintf("%1").arg(curSetting.focusTime,2,10,QChar('0'))+":00");
+    ui->lineEdit->setText(motto);
     connect(aTimer,SIGNAL(timeout()),this,SLOT(setCurTime()));
     connect(flushTimer,SIGNAL(timeout()),this,SLOT(setTimeLab()));
     connect(pomoTimer,SIGNAL(timeout()),this,SLOT(do_pomoTimer_timeOut()));
@@ -55,6 +57,18 @@ void MainWindow::readData()
 {
     readItems();
     setItems();
+    readSetting();
+}
+
+void MainWindow::readSetting()
+{
+    settings->beginGroup("pomodoro");
+    curSetting.focusTime=settings->value("Focus Time").toInt();
+    curSetting.shortBreak=settings->value("Short Break").toInt();
+    curSetting.longBreak=settings->value("Long Break").toInt();
+    curSetting.repeat=settings->value("Repeats").toInt();
+    motto=settings->value("Motto").toString();
+    settings->endGroup();
 }
 
 void MainWindow::readItems()
@@ -77,6 +91,8 @@ void MainWindow::readItems()
 void MainWindow::saveData()
 {
     saveItems();
+    motto=ui->lineEdit->text();
+    saveSetting();
 }
 
 void MainWindow::saveItems()
@@ -92,6 +108,17 @@ void MainWindow::saveItems()
         fileStream<<taskListItems.at(i);
     }
     aFile.close();
+}
+
+void MainWindow::saveSetting()
+{
+    settings->beginGroup("pomodoro");
+    settings->setValue("Focus Time",curSetting.focusTime);
+    settings->setValue("Short Break",curSetting.shortBreak);
+    settings->setValue("Long Break",curSetting.longBreak);
+    settings->setValue("Repeats",curSetting.repeat);
+    settings->setValue("Motto",motto);
+    settings->endGroup();
 }
 
 void MainWindow::setItems()
