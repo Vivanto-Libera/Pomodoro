@@ -14,7 +14,11 @@
    <string>笔记</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QPushButton
+   <string notr="true">QWidget
+{
+	color:black;
+}
+QPushButton
 {
 	background-color: rgb(255,99,71);
 	border-radius : 8px;

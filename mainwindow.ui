@@ -25,7 +25,11 @@
    <string>Pomodoro</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QPushButton
+   <string notr="true">QWidget
+{
+	color:black;
+}
+QPushButton
 {
 	background-color: rgb(255,99,71);
 	border-radius : 8px;
@@ -50,6 +54,7 @@ QPushButton:disabled
 QMainWindow
 {
 	background-color: rgb(255,228,225);
+	color:white;
 }
 QLineEdit
 {

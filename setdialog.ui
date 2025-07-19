@@ -20,6 +20,7 @@
 	border-radius : 8px;
 	border: 2px solid rgb(105,105,105);
 	transition: all 0.2s ease;
+	color:black;
 }
 QPushButton:hover
 {
