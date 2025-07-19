@@ -157,7 +157,7 @@ void MusicListsDialog::on_btn_addMusic_clicked()
 {
     QString curPath= QDir::homePath();
     QString dlgTitle= tr("选择音频文件");
-    QString filter=tr("音频文件(*.mp3 *.wav *.wma)");
+    QString filter=tr("音频文件(*.mp3 *.wav *.wma *flac *ogg *m4a)");
     QStringList fileList= QFileDialog::getOpenFileNames(this,dlgTitle,curPath,filter);
     if(fileList.count()<1)
         return;

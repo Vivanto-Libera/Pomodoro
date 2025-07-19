@@ -10,7 +10,8 @@
 #include <notewindow.h>
 #include <musiclistsdialog.h>
 #include <QSettings>
-#include <QtMultimedia>
+#include <QMediaPlayer>
+#include <QAudioOutput>
 #include <QRandomGenerator>
 
 QT_BEGIN_NAMESPACE
@@ -58,9 +59,9 @@ private:
     MusicListsDialog *musicDialog;
     QMediaPlayer *player;
     QString durationTime;
-    QString positionTime;
+    QString positionTime=QString("00:00");
     QUrl getUrlFromItem(QListWidgetItem *item);
-    bool playing;
+    bool playing=false;
     int musicIndex=0;
 
     void init();

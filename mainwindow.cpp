@@ -417,7 +417,7 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::do_stateChanged(QMediaPlayer::PlaybackState state)
 {
-    if(state == QMediaPlayer::PausedState)
+    if((state == QMediaPlayer::PausedState)||(!playing&&(state == QMediaPlayer::StoppedState)))
     {
         ui->btn_play->setIcon(QIcon(":/icons/images/play.png"));
         ui->btn_play->setToolTip(tr("播放"));
@@ -436,6 +436,11 @@ void MainWindow::do_stateChanged(QMediaPlayer::PlaybackState state)
 void MainWindow::do_sourceChanged(const QUrl &media)
 {
     ui->lab_musicName->setText(media.fileName());
+    if(media.isEmpty())
+    {
+        durationTime=QString("00:00");
+        ui->lab_musicTime->setText(positionTime+"/"+durationTime);
+    }
 }
 
 void MainWindow::do_durationChanged(qint64 duration)
