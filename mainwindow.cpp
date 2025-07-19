@@ -484,9 +484,7 @@ void MainWindow::do_musicListChanged(int index)
 
 QUrl MainWindow::getUrlFromItem(QListWidgetItem *item)
 {
-    QVariant itemData= item->data(Qt::UserRole);
-    QUrl source= itemData.value<QUrl>();
-    return source;
+    return item->data(Qt::UserRole).toUrl();
 }
 
 
@@ -559,6 +557,7 @@ void MainWindow::on_slider_volume_valueChanged(int value)
 
 void MainWindow::on_slider_position_valueChanged(int value)
 {
-    player->setPosition(value);
+    if(ui->slider_position->isSliderDown())
+        player->setPosition(value);
 }
 

@@ -10,8 +10,8 @@
 #include <notewindow.h>
 #include <musiclistsdialog.h>
 #include <QSettings>
-#include <QtMultimediaWidgets>
 #include <QtMultimedia>
+#include <QRandomGenerator>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

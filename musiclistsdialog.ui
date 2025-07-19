@@ -200,7 +200,7 @@ QInputDialog QPushButton
    <item>
     <widget class="QListWidget" name="listWidget">
      <property name="toolTip">
-      <string>向上移动</string>
+      <string/>
      </property>
     </widget>
    </item>
