@@ -56,7 +56,7 @@ private:
     NoteWindow *noteWindow;
 
     MusicListsDialog *musicDialog;
-    QMediaPlayer *player=new QMediaPlayer(this);
+    QMediaPlayer *player;
     QString durationTime;
     QString positionTime;
     QUrl getUrlFromItem(QListWidgetItem *item);

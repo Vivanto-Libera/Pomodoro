@@ -18,10 +18,10 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    musicDialog= new MusicListsDialog(this);
-    settings= new QSettings("Viavnto","Pomodoro");
+    player= new QMediaPlayer(this);
     QAudioOutput *audioOutput= new QAudioOutput(this);
     player->setAudioOutput(audioOutput);
+    settings= new QSettings("Viavnto","Pomodoro");
     if(!QFile::exists("items.bin"))
         init();
     else
@@ -40,6 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lab_pomoTime->setText(QString::asprintf("%1").arg(curSetting.focusTime,2,10,QChar('0'))+":00");
     ui->lineEdit->setText(motto);
     noteWindow= new NoteWindow(this);
+    musicDialog= new MusicListsDialog(this);
     connect(aTimer,SIGNAL(timeout()),this,SLOT(setCurTime()));
     connect(flushTimer,SIGNAL(timeout()),this,SLOT(setTimeLab()));
     connect(pomoTimer,SIGNAL(timeout()),this,SLOT(do_pomoTimer_timeOut()));
@@ -50,11 +51,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(player,&QMediaPlayer::playbackStateChanged,this,&MainWindow::do_stateChanged);
     connect(musicDialog->getListWidget(),&QListWidget::itemDoubleClicked,this,&MainWindow::do_musicItemDoubleClicked);
     connect(musicDialog->getComboBox(),&QComboBox::currentIndexChanged,this,&MainWindow::do_musicListChanged);
-    /*if(musicDialog->getListWidget()->count()>0)
+    if(musicDialog->getListWidget()->count()>0)
     {
         player->setSource(getUrlFromItem(musicDialog->getListWidget()->item(0)));
         ui->lab_musicName->setText((getUrlFromItem(musicDialog->getListWidget()->item(0))).fileName());
-    }*/
+    }
 }
 
 MainWindow::~MainWindow()
@@ -443,7 +444,7 @@ void MainWindow::do_durationChanged(qint64 duration)
     int secs= duration/1000;
     int mins= secs/60;
     secs=secs%60;
-    durationTime=QString::asprintf("%d:%d",mins,secs);
+    durationTime=QString::asprintf("%1:%2").arg(mins,2,10,QChar('0')).arg(secs,2,10,QChar('0'));
     ui->lab_musicTime->setText(positionTime+"/"+durationTime);
 }
 
