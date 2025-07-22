@@ -54,7 +54,6 @@ QPushButton:disabled
 QMainWindow
 {
 	background-color: rgb(255,228,225);
-	color:white;
 }
 QLineEdit
 {
@@ -106,6 +105,11 @@ QListWidget::indicator:checked
 QMessageBox QPushButton
 {
 	width:60px;
+}
+QMessageBox
+{
+	
+	background-color: rgb(255,228,225);
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">

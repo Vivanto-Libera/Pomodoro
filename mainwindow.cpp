@@ -66,6 +66,20 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if(curStatus==pomoStatus::Focus || curStatus==pomoStatus::Relax)
+    {
+        QMessageBox::StandardButton res=QMessageBox::question(this,tr("退出程序"),tr("正在使用番茄钟，确定要退出吗？"),QMessageBox::Yes|QMessageBox::No);
+        if(res==QMessageBox::Yes)
+            event->accept();
+        else
+            event->ignore();
+    }
+    else
+        event->accept();
+}
+
 void MainWindow::init()
 {
     listVisible=true;
