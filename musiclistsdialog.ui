@@ -79,6 +79,16 @@ QLabel
 QInputDialog QPushButton
 {
 	width:60px;
+}
+QScrollBar
+{
+	border-raidus:8px;
+	background-color:rgb(215,200,215);
+}
+QScrollBar::handle
+{
+	border-radius:8px;
+	background-color:rgb(220,190,220);
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
