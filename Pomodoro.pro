@@ -14,18 +14,21 @@ SOURCES += \
     mainwindow.cpp \
     musiclistsdialog.cpp \
     notewindow.cpp \
+    savesettingdialog.cpp \
     setdialog.cpp
 
 HEADERS += \
     mainwindow.h \
     musiclistsdialog.h \
     notewindow.h \
+    savesettingdialog.h \
     setdialog.h
 
 FORMS += \
     mainwindow.ui \
     musiclistsdialog.ui \
     notewindow.ui \
+    savesettingdialog.ui \
     setdialog.ui
 
 TRANSLATIONS += \

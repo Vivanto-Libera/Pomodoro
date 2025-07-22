@@ -1,5 +1,6 @@
 #include "setdialog.h"
 #include "ui_setdialog.h"
+#include <savesettingdialog.h>
 
 SetDialog::SetDialog(QWidget *parent)
     : QDialog(parent),ui(new Ui::SetDialog)
@@ -36,5 +37,17 @@ void SetDialog::on_btn_reset_clicked()
     ui->spin_ShortRelax->setValue(5);
     ui->spin_longRelax->setValue(20);
     ui->spin_repeatTimes->setValue(4);
+}
+
+
+void SetDialog::on_btn_save_clicked()
+{
+    SaveSettingDialog *aDialog=new SaveSettingDialog(this);
+    int ret= aDialog->exec();
+    if(ret == QDialog::Accepted)
+    {
+        ini(aDialog->getSetting());
+    }
+    delete aDialog;
 }
 
