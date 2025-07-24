@@ -25,6 +25,9 @@ MainWindow::MainWindow(QWidget *parent)
     noteWindow= new NoteWindow(this);
     musicDialog= new MusicListsDialog(this);
     settings= new QSettings("Viavnto","Pomodoro");
+    connect(ui->ts_combox,SIGNAL(currentIndexChanged(int)),this,SLOT(do_language_changed(int)));
+    connect(ui->ts_combox,SIGNAL(currentIndexChanged(int)),noteWindow,SLOT(do_language_changed(int)));
+    connect(ui->ts_combox,SIGNAL(currentIndexChanged(int)),musicDialog,SLOT(do_language_changed(int)));
     if(!QFile::exists("items.bin"))
         init();
     else
@@ -45,9 +48,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(aTimer,SIGNAL(timeout()),this,SLOT(setCurTime()));
     connect(flushTimer,SIGNAL(timeout()),this,SLOT(setTimeLab()));
     connect(pomoTimer,SIGNAL(timeout()),this,SLOT(do_pomoTimer_timeOut()));
-    connect(ui->ts_combox,SIGNAL(currentIndexChanged(int)),this,SLOT(do_language_changed(int)));
-    connect(ui->ts_combox,SIGNAL(currentIndexChanged(int)),noteWindow,SLOT(do_language_changed(int)));
-    connect(ui->ts_combox,SIGNAL(currentIndexChanged(int)),musicDialog,SLOT(do_language_changed(int)));
 
     connect(player,&QMediaPlayer::positionChanged,this,&MainWindow::do_positionChanged);
     connect(player,&QMediaPlayer::durationChanged,this,&MainWindow::do_durationChanged);
