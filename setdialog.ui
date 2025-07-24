@@ -578,6 +578,9 @@ QLabel
            <property name="text">
             <string>循环次数</string>
            </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignCenter</set>
+           </property>
           </widget>
          </item>
         </layout>

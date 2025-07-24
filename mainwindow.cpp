@@ -437,6 +437,7 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::do_language_changed(int index)
 {
+    QString motto=ui->lineEdit->text();
     switch (index) {
     case 0:
         if(!trans.load("Pomodoro_zh_CN.qm"))
@@ -456,6 +457,7 @@ void MainWindow::do_language_changed(int index)
         break;
     }
     ui->retranslateUi(this);
+    ui->lineEdit->setText(motto);
 }
 
 void MainWindow::do_stateChanged(QMediaPlayer::PlaybackState state)
