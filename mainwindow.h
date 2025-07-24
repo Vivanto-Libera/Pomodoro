@@ -95,6 +95,7 @@ private slots:
     void on_btn_reset_clicked();
     void on_btn_setting_clicked();
     void on_pushButton_3_clicked();
+    void do_language_changed(int index);
 
     void do_stateChanged(QMediaPlayer::PlaybackState state);
     void do_sourceChanged(const QUrl &media);

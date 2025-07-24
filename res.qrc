@@ -38,6 +38,7 @@
         <file>images/mute.png</file>
         <file>images/save.png</file>
         <file>images/time.png</file>
+        <file>images/language.png</file>
     </qresource>
     <qresource prefix="/fonts">
         <file>fonts/Huxiaobo.ttf</file>

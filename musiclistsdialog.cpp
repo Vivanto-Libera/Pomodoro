@@ -4,7 +4,8 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QInputDialog>
-
+#include <QTranslator>
+extern QTranslator trans;
 MusicListsDialog::MusicListsDialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::MusicListsDialog)
@@ -208,5 +209,28 @@ void MusicListsDialog::on_btn_down_clicked()
     ui->listWidget->insertItem(index+1,aItem);
     ui->listWidget->setCurrentItem(aItem);
     musicLists[ui->comboBox->currentIndex()].swapItemsAt(index+1,index+2);
+}
+
+void MusicListsDialog::do_language_changed(int index)
+{
+    switch (index) {
+    case 0:
+        if(!trans.load("Pomodoro_zh_CN.qm"))
+            return;
+        break;
+    case 1:
+        if(!trans.load("Pomodoro_zh_TW.qm"))
+            return;
+        break;
+    case 2:
+        if(!trans.load("Pomodoro_en.qm"))
+            return;
+        break;
+    case 3:
+        if(!trans.load("Pomodoro_esp.qm"))
+            return;
+        break;
+    }
+    ui->retranslateUi(this);
 }
 

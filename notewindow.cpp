@@ -1,5 +1,7 @@
 #include "notewindow.h"
 #include "ui_notewindow.h"
+#include <QTranslator>
+extern QTranslator trans;
 QDataStream &operator<<(QDataStream &out,const NoteWindow::note &aNote)
 {
     out<<aNote.title<<aNote.text;
@@ -151,5 +153,28 @@ void NoteWindow::on_btn_changeName_clicked()
         ui->noteCombo->setItemText(ui->noteCombo->currentIndex(),str);
         notes.replace(ui->noteCombo->currentIndex(),{str,notes.at(ui->noteCombo->currentIndex()).text});
     }
+}
+
+void NoteWindow::do_language_changed(int index)
+{
+    switch (index) {
+    case 0:
+        if(!trans.load("Pomodoro_zh_CN.qm"))
+            return;
+        break;
+    case 1:
+        if(!trans.load("Pomodoro_zh_TW.qm"))
+            return;
+        break;
+    case 2:
+        if(!trans.load("Pomodoro_en.qm"))
+            return;
+        break;
+    case 3:
+        if(!trans.load("Pomodoro_esp.qm"))
+            return;
+        break;
+    }
+    ui->retranslateUi(this);
 }
 

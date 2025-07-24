@@ -37,7 +37,7 @@
     <message>
         <location filename="mainwindow.ui" line="379"/>
         <source>打开笔记</source>
-        <translation>Ŝaltu Noton</translation>
+        <translation>Malfermu Noton</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="463"/>
@@ -141,38 +141,38 @@
     <message>
         <location filename="mainwindow.cpp" line="318"/>
         <source>显示</source>
-        <translation type="unfinished"></translation>
+        <translation>Montru</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="336"/>
         <source>新项</source>
-        <translation type="unfinished"></translation>
+        <translation>Nova Ero</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="378"/>
         <location filename="mainwindow.cpp" line="426"/>
         <source>错误</source>
-        <translation type="unfinished"></translation>
+        <translation>Eraro</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="378"/>
         <source>笔记已打开</source>
-        <translation type="unfinished"></translation>
+        <translation>La noto estas malfermita</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="426"/>
         <source>歌单已打开</source>
-        <translation type="unfinished"></translation>
+        <translation>La kantoliston estas malfermita</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="437"/>
         <source>播放</source>
-        <translation type="unfinished"></translation>
+        <translation>Ludu</translation>
     </message>
     <message>
         <location filename="mainwindow.h" line="59"/>
         <source>此处可输入座右铭</source>
-        <translation type="unfinished"></translation>
+        <translation>Ĉi tie vi povas enigi moton</translation>
     </message>
 </context>
 <context>
@@ -180,98 +180,98 @@
     <message>
         <location filename="musiclistsdialog.ui" line="14"/>
         <source>歌单</source>
-        <translation type="unfinished"></translation>
+        <translation>kantolisto</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.ui" line="100"/>
         <source>歌单名</source>
-        <translation type="unfinished"></translation>
+        <translation>Nomo</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.ui" line="113"/>
         <source>新建歌单</source>
-        <translation type="unfinished"></translation>
+        <translation>Kreu kantoliston</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.ui" line="127"/>
         <source>删除歌单</source>
-        <translation type="unfinished"></translation>
+        <translation>Forigu Kantoliston</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.ui" line="141"/>
         <source>重命名歌单</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinomu Kantoliston</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.ui" line="159"/>
         <source>添加音乐</source>
-        <translation type="unfinished"></translation>
+        <translation>Aldonu Muzikon</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.ui" line="173"/>
         <source>删除音乐</source>
-        <translation type="unfinished"></translation>
+        <translation>Forigu Muzikon</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.ui" line="187"/>
         <source>向上移动</source>
-        <translation type="unfinished"></translation>
+        <translation>Movu Supren</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.ui" line="201"/>
         <source>向下移动</source>
-        <translation type="unfinished"></translation>
+        <translation>Movu Malsupren</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.cpp" line="43"/>
         <source>初始歌单</source>
-        <translation type="unfinished"></translation>
+        <translation>Komenca Kantolisto</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.cpp" line="114"/>
         <location filename="musiclistsdialog.cpp" line="115"/>
         <source>未命名歌单</source>
-        <translation type="unfinished"></translation>
+        <translation>Sentitola Kantolisto</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.cpp" line="129"/>
         <source>确认删除</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfirmu Forigon</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.cpp" line="129"/>
         <source>是否删除该歌单？</source>
-        <translation type="unfinished"></translation>
+        <translation>Ĉu vi certas, ke vi volas forigi ĉi tiun kantoliston?</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.cpp" line="135"/>
         <source>删除失败</source>
-        <translation type="unfinished"></translation>
+        <translation>Forigo Malsukecesis</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.cpp" line="135"/>
         <source>无法删除最后一个歌单</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne eblas forigi la lastan kantoliston</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.cpp" line="147"/>
         <source>修改歌单名称</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinomu Kantoliston</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.cpp" line="147"/>
         <source>请输入新名称</source>
-        <translation type="unfinished"></translation>
+        <translation>Bonvolu enigi novan nomon</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.cpp" line="159"/>
         <source>选择音频文件</source>
-        <translation type="unfinished"></translation>
+        <translation>Elektu Son-dosieron</translation>
     </message>
     <message>
         <location filename="musiclistsdialog.cpp" line="160"/>
         <source>音频文件(*.mp3 *.wav *.wma *flac *ogg *m4a)</source>
-        <translation type="unfinished"></translation>
+        <translation>Son-dosieron(*.mp3 *.wav *.wma *flac *ogg *m4a)</translation>
     </message>
 </context>
 <context>
@@ -279,169 +279,169 @@
     <message>
         <location filename="notewindow.ui" line="14"/>
         <source>笔记</source>
-        <translation type="unfinished"></translation>
+        <translation>Noto</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="128"/>
         <source>选择笔记</source>
-        <translation type="unfinished"></translation>
+        <translation>Elektu Noton</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="148"/>
         <location filename="notewindow.cpp" line="114"/>
         <source>未命名笔记</source>
-        <translation type="unfinished"></translation>
+        <translation>Sentitola Noto</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="156"/>
         <source>新建笔记</source>
-        <translation type="unfinished"></translation>
+        <translation>Kreu Noton</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="170"/>
         <source>删除笔记</source>
-        <translation type="unfinished"></translation>
+        <translation>Forigu Noton</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="184"/>
         <source>修改名称</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinomu Noton</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="234"/>
         <source>toolBar</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="274"/>
         <source>剪切</source>
-        <translation type="unfinished"></translation>
+        <translation>Eltondu</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="277"/>
         <source>剪切到粘贴板</source>
-        <translation type="unfinished"></translation>
+        <translation>Eltondu al tondujo</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="280"/>
         <source>Ctrl+X</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="292"/>
         <source>复制</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiu</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="295"/>
         <source>复制到粘贴板</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiu al tondujo</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="298"/>
         <source>Ctrl+C</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="310"/>
         <source>粘贴</source>
-        <translation type="unfinished"></translation>
+        <translation>Algluu</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="313"/>
         <source>从粘贴板粘贴</source>
-        <translation type="unfinished"></translation>
+        <translation>Algluu el  el tondujo</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="316"/>
         <source>Ctrl+V</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="328"/>
         <source>撤销</source>
-        <translation type="unfinished"></translation>
+        <translation>Malfaru</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="331"/>
         <source>撤销上次编辑操作</source>
-        <translation type="unfinished"></translation>
+        <translation>Malfaru lastan redakton</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="334"/>
         <source>Ctrl+Z</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="346"/>
         <source>重做</source>
-        <translation type="unfinished"></translation>
+        <translation>Refaru</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="349"/>
         <source>重做上次操作</source>
-        <translation type="unfinished"></translation>
+        <translation>Refaru lastan redakton</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="352"/>
         <source>Ctrl+Y</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="367"/>
         <location filename="notewindow.ui" line="370"/>
         <source>粗体</source>
-        <translation type="unfinished"></translation>
+        <translation>Grasa</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="385"/>
         <source>斜体</source>
-        <translation type="unfinished"></translation>
+        <translation>Kursiva</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="400"/>
         <source>下划线</source>
-        <translation type="unfinished"></translation>
+        <translation>Substreko</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="412"/>
         <source>清空</source>
-        <translation type="unfinished"></translation>
+        <translation>Malplenigu</translation>
     </message>
     <message>
         <location filename="notewindow.ui" line="415"/>
         <source>清空文本</source>
-        <translation type="unfinished"></translation>
+        <translation>Malplenigu tekston</translation>
     </message>
     <message>
         <location filename="notewindow.cpp" line="126"/>
         <source>确认删除</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfirmu Forigon</translation>
     </message>
     <message>
         <location filename="notewindow.cpp" line="126"/>
         <source>是否删除该笔记？</source>
-        <translation type="unfinished"></translation>
+        <translation>Ĉu vi certas, ke vi volas forigi ĉi tiun noton?</translation>
     </message>
     <message>
         <location filename="notewindow.cpp" line="132"/>
         <source>删除失败</source>
-        <translation type="unfinished"></translation>
+        <translation>Forigo Malsukecesis</translation>
     </message>
     <message>
         <location filename="notewindow.cpp" line="132"/>
         <source>无法删除最后一个笔记</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne eblas forigi la lastan noton</translation>
     </message>
     <message>
         <location filename="notewindow.cpp" line="148"/>
         <source>修改笔记名称</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinomu Noton</translation>
     </message>
     <message>
         <location filename="notewindow.cpp" line="148"/>
         <source>请输入新名称</source>
-        <translation type="unfinished"></translation>
+        <translation>Bonvolu enigi novan nomon</translation>
     </message>
 </context>
 <context>
@@ -449,105 +449,105 @@
     <message>
         <location filename="savesettingdialog.ui" line="14"/>
         <source>储存设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Konservu Agordon</translation>
     </message>
     <message>
         <location filename="savesettingdialog.ui" line="86"/>
         <source>新建设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Kreu Agordon</translation>
     </message>
     <message>
         <location filename="savesettingdialog.ui" line="100"/>
         <source>删除设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Forigu Agordon</translation>
     </message>
     <message>
         <location filename="savesettingdialog.ui" line="114"/>
         <source>重命名设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinomu Agordon</translation>
     </message>
     <message>
         <location filename="savesettingdialog.ui" line="252"/>
         <source>专注时长</source>
-        <translation type="unfinished"></translation>
+        <translation>Koncentriĝa Daŭro</translation>
     </message>
     <message>
         <location filename="savesettingdialog.ui" line="380"/>
         <source>短休息</source>
-        <translation type="unfinished"></translation>
+        <translation>Mallonga Ripozo</translation>
     </message>
     <message>
         <location filename="savesettingdialog.ui" line="508"/>
         <source>长休息</source>
-        <translation type="unfinished"></translation>
+        <translation>Longa Ripozo</translation>
     </message>
     <message>
         <location filename="savesettingdialog.ui" line="636"/>
         <source>循环次数</source>
-        <translation type="unfinished"></translation>
+        <translation>Cikla Nombro</translation>
     </message>
     <message>
         <location filename="savesettingdialog.ui" line="656"/>
         <location filename="savesettingdialog.ui" line="672"/>
         <location filename="savesettingdialog.ui" line="688"/>
         <source>分钟</source>
-        <translation type="unfinished"></translation>
+        <translation>Min</translation>
     </message>
     <message>
         <location filename="savesettingdialog.ui" line="704"/>
         <source>次</source>
-        <translation type="unfinished"></translation>
+        <translation>Fojo</translation>
     </message>
     <message>
         <location filename="savesettingdialog.ui" line="723"/>
         <source>应用</source>
-        <translation type="unfinished"></translation>
+        <translation>Apliku</translation>
     </message>
     <message>
         <location filename="savesettingdialog.ui" line="730"/>
         <source>取消</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuligu</translation>
     </message>
     <message>
         <location filename="savesettingdialog.cpp" line="42"/>
         <source>默认设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Defaŭlta Agordo</translation>
     </message>
     <message>
         <location filename="savesettingdialog.cpp" line="114"/>
         <source>修改设置名称</source>
-        <translation type="unfinished"></translation>
+        <translation>Alinomu Agordon</translation>
     </message>
     <message>
         <location filename="savesettingdialog.cpp" line="114"/>
         <source>请输入新名称</source>
-        <translation type="unfinished"></translation>
+        <translation>Bonvolu enigi novan nomon</translation>
     </message>
     <message>
         <location filename="savesettingdialog.cpp" line="125"/>
         <location filename="savesettingdialog.cpp" line="126"/>
         <source>未命名设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Sentitola Agordo</translation>
     </message>
     <message>
         <location filename="savesettingdialog.cpp" line="137"/>
         <source>确认删除</source>
-        <translation type="unfinished"></translation>
+        <translation>Konfirmu Forigon</translation>
     </message>
     <message>
         <location filename="savesettingdialog.cpp" line="137"/>
         <source>是否删除该设置？</source>
-        <translation type="unfinished"></translation>
+        <translation>Ĉu vi certas, ke vi volas forigi ĉi tiun agordon?</translation>
     </message>
     <message>
         <location filename="savesettingdialog.cpp" line="143"/>
         <source>删除失败</source>
-        <translation type="unfinished"></translation>
+        <translation>Forigo Malsukecesis</translation>
     </message>
     <message>
         <location filename="savesettingdialog.cpp" line="143"/>
         <source>无法删除最后一个设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne eblas forigi la lastan agordon</translation>
     </message>
 </context>
 <context>
@@ -556,59 +556,59 @@
         <location filename="setdialog.ui" line="14"/>
         <source>设置</source>
         <oldsource>保存设置</oldsource>
-        <translation type="unfinished"></translation>
+        <translation>Agordo</translation>
     </message>
     <message>
         <location filename="setdialog.ui" line="198"/>
         <source>专注时长</source>
-        <translation type="unfinished"></translation>
+        <translation>Koncentriĝa Daŭro</translation>
     </message>
     <message>
         <location filename="setdialog.ui" line="323"/>
         <source>短休息</source>
-        <translation type="unfinished"></translation>
+        <translation>Mallonga Ripozo</translation>
     </message>
     <message>
         <location filename="setdialog.ui" line="451"/>
         <source>长休息</source>
-        <translation type="unfinished"></translation>
+        <translation>Longa Ripozo</translation>
     </message>
     <message>
         <location filename="setdialog.ui" line="579"/>
         <source>循环次数</source>
-        <translation type="unfinished"></translation>
+        <translation>Cikla Nombro</translation>
     </message>
     <message>
         <location filename="setdialog.ui" line="593"/>
         <location filename="setdialog.ui" line="606"/>
         <location filename="setdialog.ui" line="619"/>
         <source>分钟</source>
-        <translation type="unfinished"></translation>
+        <translation>Min</translation>
     </message>
     <message>
         <location filename="setdialog.ui" line="632"/>
         <source>次</source>
-        <translation type="unfinished"></translation>
+        <translation>Fojo</translation>
     </message>
     <message>
         <location filename="setdialog.ui" line="670"/>
         <source>储存设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Konservu Agordon</translation>
     </message>
     <message>
         <location filename="setdialog.ui" line="699"/>
         <source>恢复默认</source>
-        <translation type="unfinished"></translation>
+        <translation>Restarigu al la defaŭlta argodon</translation>
     </message>
     <message>
         <location filename="setdialog.ui" line="739"/>
         <source>确认</source>
-        <translation type="unfinished"></translation>
+        <translation>Apliku</translation>
     </message>
     <message>
         <location filename="setdialog.ui" line="746"/>
         <source>取消</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuligu</translation>
     </message>
 </context>
 </TS>

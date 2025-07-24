@@ -39,6 +39,8 @@ private slots:
 
     void on_btn_down_clicked();
 
+    void do_language_changed(int index);
+
 private:
     Ui::MusicListsDialog *ui;
     QSettings *settings;

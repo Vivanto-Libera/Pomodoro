@@ -5,21 +5,14 @@
 #include <QLocale>
 #include <QTranslator>
 #include <QFontDatabase>
-
+QTranslator trans;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     QFontDatabase::addApplicationFont(":/fonts/fonts/Huxiaobo.ttf");
     QFontDatabase::addApplicationFont(":/fonts/fonts/Weilaiyuan.ttf");
-    QTranslator translator;
-    const QStringList uiLanguages = QLocale::system().uiLanguages();
-    for (const QString &locale : uiLanguages) {
-        const QString baseName = "Pomodoro_" + QLocale(locale).name();
-        if (translator.load(":/i18n/" + baseName)) {
-            a.installTranslator(&translator);
-            break;
-        }
-    }
+    trans.load("Pomodoro_zh_CN.qm");
+    a.installTranslator(&trans);
     MainWindow w;
     w.show();
     return a.exec();

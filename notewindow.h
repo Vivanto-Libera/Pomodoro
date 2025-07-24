@@ -40,6 +40,8 @@ private slots:
 
     void on_btn_changeName_clicked();
 
+    void do_language_changed(int index);
+
 private:
     Ui::NoteWindow *ui;
     QList<note> notes;

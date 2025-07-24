@@ -1,7 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <setdialog.h>
-
+#include <QTranslator>
+extern QTranslator trans;
 QDataStream &operator<<(QDataStream &out,const MainWindow::aTaskItem &aItem)
 {
     out<<aItem.aItem<<aItem.checked;
@@ -21,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
     player= new QMediaPlayer(this);
     QAudioOutput *audioOutput= new QAudioOutput(this);
     player->setAudioOutput(audioOutput);
+    noteWindow= new NoteWindow(this);
+    musicDialog= new MusicListsDialog(this);
     settings= new QSettings("Viavnto","Pomodoro");
     if(!QFile::exists("items.bin"))
         init();
@@ -39,11 +42,12 @@ MainWindow::MainWindow(QWidget *parent)
     flushTimer->setSingleShot(false);
     ui->lab_pomoTime->setText(QString::asprintf("%1").arg(curSetting.focusTime,2,10,QChar('0'))+":00");
     ui->lineEdit->setText(motto);
-    noteWindow= new NoteWindow(this);
-    musicDialog= new MusicListsDialog(this);
     connect(aTimer,SIGNAL(timeout()),this,SLOT(setCurTime()));
     connect(flushTimer,SIGNAL(timeout()),this,SLOT(setTimeLab()));
     connect(pomoTimer,SIGNAL(timeout()),this,SLOT(do_pomoTimer_timeOut()));
+    connect(ui->ts_combox,SIGNAL(currentIndexChanged(int)),this,SLOT(do_language_changed(int)));
+    connect(ui->ts_combox,SIGNAL(currentIndexChanged(int)),noteWindow,SLOT(do_language_changed(int)));
+    connect(ui->ts_combox,SIGNAL(currentIndexChanged(int)),musicDialog,SLOT(do_language_changed(int)));
 
     connect(player,&QMediaPlayer::positionChanged,this,&MainWindow::do_positionChanged);
     connect(player,&QMediaPlayer::durationChanged,this,&MainWindow::do_durationChanged);
@@ -102,6 +106,7 @@ void MainWindow::readSetting()
     curSetting.repeat=settings->value("Repeats").toInt();
     motto=settings->value("Motto").toString();
     ui->slider_volume->setValue(settings->value("Volume").toInt());
+    ui->ts_combox->setCurrentIndex(settings->value("Language").toInt());
     settings->endGroup();
 }
 
@@ -153,6 +158,7 @@ void MainWindow::saveSetting()
     settings->setValue("Repeats",curSetting.repeat);
     settings->setValue("Motto",motto);
     settings->setValue("Volume",ui->slider_volume->value());
+    settings->setValue("Language",ui->ts_combox->currentIndex());
     settings->endGroup();
 }
 
@@ -429,6 +435,29 @@ void MainWindow::on_pushButton_3_clicked()
     musicDialog->show();
 }
 
+void MainWindow::do_language_changed(int index)
+{
+    switch (index) {
+    case 0:
+        if(!trans.load("Pomodoro_zh_CN.qm"))
+            return;
+        break;
+    case 1:
+        if(!trans.load("Pomodoro_zh_TW.qm"))
+            return;
+        break;
+    case 2:
+        if(!trans.load("Pomodoro_en.qm"))
+            return;
+        break;
+    case 3:
+        if(!trans.load("Pomodoro_esp.qm"))
+            return;
+        break;
+    }
+    ui->retranslateUi(this);
+}
+
 void MainWindow::do_stateChanged(QMediaPlayer::PlaybackState state)
 {
     if((state == QMediaPlayer::PausedState)||(!playing&&(state == QMediaPlayer::StoppedState)))
@@ -579,4 +608,3 @@ void MainWindow::on_slider_position_valueChanged(int value)
     if(ui->slider_position->isSliderDown())
         player->setPosition(value);
 }
-
