@@ -744,6 +744,9 @@ QScrollBar::handle
             <property name="acceptDrops">
              <bool>false</bool>
             </property>
+            <property name="toolTip">
+             <string>此处可输入座右铭</string>
+            </property>
             <property name="text">
              <string/>
             </property>

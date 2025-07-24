@@ -15,7 +15,7 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="221"/>
-        <location filename="mainwindow.cpp" line="326"/>
+        <location filename="mainwindow.cpp" line="332"/>
         <source>隐藏</source>
         <translation>隱藏</translation>
     </message>
@@ -61,7 +61,7 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="625"/>
-        <location filename="mainwindow.cpp" line="236"/>
+        <location filename="mainwindow.cpp" line="242"/>
         <source>未开始</source>
         <translation>未開始</translation>
     </message>
@@ -72,7 +72,7 @@
     </message>
     <message>
         <location filename="mainwindow.ui" line="670"/>
-        <location filename="mainwindow.cpp" line="279"/>
+        <location filename="mainwindow.cpp" line="285"/>
         <source>开始</source>
         <translation>開始</translation>
     </message>
@@ -82,95 +82,95 @@
         <translation>重設</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="851"/>
+        <location filename="mainwindow.ui" line="857"/>
         <source>音乐</source>
         <translation>音樂</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="880"/>
+        <location filename="mainwindow.ui" line="886"/>
         <source>查看歌单</source>
         <translation>查看歌單</translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1002"/>
+        <location filename="mainwindow.ui" line="1008"/>
         <source>50</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.ui" line="1033"/>
+        <location filename="mainwindow.ui" line="1039"/>
         <source>00:00/00:00</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="73"/>
+        <location filename="mainwindow.cpp" line="77"/>
         <source>退出程序</source>
         <translation>退出程式</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="73"/>
+        <location filename="mainwindow.cpp" line="77"/>
         <source>正在使用番茄钟，确定要退出吗？</source>
         <translation>正在使用番茄鐘，確定要退出嗎？</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="227"/>
+        <location filename="mainwindow.cpp" line="233"/>
         <source>专注中</source>
         <translation>專注中</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="230"/>
+        <location filename="mainwindow.cpp" line="236"/>
         <source>休息中</source>
         <translation>休息中</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="233"/>
+        <location filename="mainwindow.cpp" line="239"/>
         <source>暂停中</source>
         <translation>暫停中</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="245"/>
-        <location filename="mainwindow.cpp" line="269"/>
-        <location filename="mainwindow.cpp" line="442"/>
+        <location filename="mainwindow.cpp" line="251"/>
+        <location filename="mainwindow.cpp" line="275"/>
+        <location filename="mainwindow.cpp" line="473"/>
         <source>暂停</source>
         <translation>暫停</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="256"/>
+        <location filename="mainwindow.cpp" line="262"/>
         <source>继续</source>
         <translation>繼續</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="318"/>
+        <location filename="mainwindow.cpp" line="324"/>
         <source>显示</source>
         <translation>顯示</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="336"/>
+        <location filename="mainwindow.cpp" line="342"/>
         <source>新项</source>
         <translation>新項</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="378"/>
-        <location filename="mainwindow.cpp" line="426"/>
+        <location filename="mainwindow.cpp" line="384"/>
+        <location filename="mainwindow.cpp" line="432"/>
         <source>错误</source>
         <translation>錯誤</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="378"/>
+        <location filename="mainwindow.cpp" line="384"/>
         <source>笔记已打开</source>
         <translation>筆記已打開</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="426"/>
+        <location filename="mainwindow.cpp" line="432"/>
         <source>歌单已打开</source>
         <translation>歌單已打開</translation>
     </message>
     <message>
-        <location filename="mainwindow.cpp" line="437"/>
+        <location filename="mainwindow.cpp" line="468"/>
         <source>播放</source>
         <translation>播放</translation>
     </message>
     <message>
-        <location filename="mainwindow.h" line="59"/>
+        <location filename="mainwindow.ui" line="748"/>
         <source>此处可输入座右铭</source>
         <translation>此處可輸入座右銘</translation>
     </message>
@@ -223,53 +223,53 @@
         <translation>向下移動</translation>
     </message>
     <message>
-        <location filename="musiclistsdialog.cpp" line="43"/>
+        <location filename="musiclistsdialog.cpp" line="44"/>
         <source>初始歌单</source>
         <translation>初始歌單</translation>
     </message>
     <message>
-        <location filename="musiclistsdialog.cpp" line="114"/>
         <location filename="musiclistsdialog.cpp" line="115"/>
+        <location filename="musiclistsdialog.cpp" line="116"/>
         <source>未命名歌单</source>
         <translation>未命名歌單</translation>
     </message>
     <message>
-        <location filename="musiclistsdialog.cpp" line="129"/>
+        <location filename="musiclistsdialog.cpp" line="130"/>
         <source>确认删除</source>
         <translation>確認刪除</translation>
     </message>
     <message>
-        <location filename="musiclistsdialog.cpp" line="129"/>
+        <location filename="musiclistsdialog.cpp" line="130"/>
         <source>是否删除该歌单？</source>
         <translation>是否刪除該歌單？</translation>
     </message>
     <message>
-        <location filename="musiclistsdialog.cpp" line="135"/>
+        <location filename="musiclistsdialog.cpp" line="136"/>
         <source>删除失败</source>
         <translation>刪除失敗</translation>
     </message>
     <message>
-        <location filename="musiclistsdialog.cpp" line="135"/>
+        <location filename="musiclistsdialog.cpp" line="136"/>
         <source>无法删除最后一个歌单</source>
         <translation>無法刪除最後一個歌單</translation>
     </message>
     <message>
-        <location filename="musiclistsdialog.cpp" line="147"/>
+        <location filename="musiclistsdialog.cpp" line="148"/>
         <source>修改歌单名称</source>
         <translation>修改歌單名稱</translation>
     </message>
     <message>
-        <location filename="musiclistsdialog.cpp" line="147"/>
+        <location filename="musiclistsdialog.cpp" line="148"/>
         <source>请输入新名称</source>
         <translation>請輸入新名稱</translation>
     </message>
     <message>
-        <location filename="musiclistsdialog.cpp" line="159"/>
+        <location filename="musiclistsdialog.cpp" line="160"/>
         <source>选择音频文件</source>
         <translation>選擇音訊檔案</translation>
     </message>
     <message>
-        <location filename="musiclistsdialog.cpp" line="160"/>
+        <location filename="musiclistsdialog.cpp" line="161"/>
         <source>音频文件(*.mp3 *.wav *.wma *flac *ogg *m4a)</source>
         <translation>音訊檔案(*.mp3 *.wav *.wma *flac *ogg *m4a)</translation>
     </message>
@@ -288,7 +288,7 @@
     </message>
     <message>
         <location filename="notewindow.ui" line="148"/>
-        <location filename="notewindow.cpp" line="114"/>
+        <location filename="notewindow.cpp" line="116"/>
         <source>未命名笔记</source>
         <translation>未命名筆記</translation>
     </message>
@@ -414,32 +414,32 @@
         <translation>清空文字</translation>
     </message>
     <message>
-        <location filename="notewindow.cpp" line="126"/>
+        <location filename="notewindow.cpp" line="128"/>
         <source>确认删除</source>
         <translation>確認刪除</translation>
     </message>
     <message>
-        <location filename="notewindow.cpp" line="126"/>
+        <location filename="notewindow.cpp" line="128"/>
         <source>是否删除该笔记？</source>
         <translation>是否刪除該筆記？</translation>
     </message>
     <message>
-        <location filename="notewindow.cpp" line="132"/>
+        <location filename="notewindow.cpp" line="134"/>
         <source>删除失败</source>
         <translation>刪除失敗</translation>
     </message>
     <message>
-        <location filename="notewindow.cpp" line="132"/>
+        <location filename="notewindow.cpp" line="134"/>
         <source>无法删除最后一个笔记</source>
         <translation>無法刪除最後一個筆記</translation>
     </message>
     <message>
-        <location filename="notewindow.cpp" line="148"/>
+        <location filename="notewindow.cpp" line="150"/>
         <source>修改笔记名称</source>
         <translation>修改筆記名稱</translation>
     </message>
     <message>
-        <location filename="notewindow.cpp" line="148"/>
+        <location filename="notewindow.cpp" line="150"/>
         <source>请输入新名称</source>
         <translation>請輸入新名稱</translation>
     </message>
@@ -579,34 +579,34 @@
         <translation>循環次數</translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="593"/>
-        <location filename="setdialog.ui" line="606"/>
-        <location filename="setdialog.ui" line="619"/>
+        <location filename="setdialog.ui" line="596"/>
+        <location filename="setdialog.ui" line="609"/>
+        <location filename="setdialog.ui" line="622"/>
         <source>分钟</source>
         <translation>分鐘</translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="632"/>
+        <location filename="setdialog.ui" line="635"/>
         <source>次</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="670"/>
+        <location filename="setdialog.ui" line="673"/>
         <source>储存设置</source>
         <translation>儲存設定</translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="699"/>
+        <location filename="setdialog.ui" line="702"/>
         <source>恢复默认</source>
         <translation>恢復預設</translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="739"/>
+        <location filename="setdialog.ui" line="742"/>
         <source>确认</source>
         <translation>確認</translation>
     </message>
     <message>
-        <location filename="setdialog.ui" line="746"/>
+        <location filename="setdialog.ui" line="749"/>
         <source>取消</source>
         <translation>取消</translation>
     </message>

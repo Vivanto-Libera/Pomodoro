@@ -56,7 +56,7 @@ private:
     qint8 pomoRepeats=0;
     pomoSetting curSetting;
     QSettings *settings;
-    QString motto=tr("此处可输入座右铭");
+    QString motto;
     NoteWindow *noteWindow;
 
     MusicListsDialog *musicDialog;
