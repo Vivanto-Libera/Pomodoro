@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>储存设置</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QWidget
@@ -250,6 +250,9 @@ QSpinBox::down-button
          </property>
          <property name="text">
           <string>专注时长</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
         </widget>
        </item>
@@ -631,6 +634,9 @@ QSpinBox::down-button
          </property>
          <property name="text">
           <string>循环次数</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
         </widget>
        </item>

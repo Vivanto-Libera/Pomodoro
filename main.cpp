@@ -1,3 +1,4 @@
+//Created By Vivanto(GitHub:Vivanto-Libera)(E-Mail:1425078256@qq.com)
 #include "mainwindow.h"
 
 #include <QApplication>
@@ -8,8 +9,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    int fontId= QFontDatabase::addApplicationFont(":/fonts/fonts/Huxiaobo.ttf");
-    fontId= QFontDatabase::addApplicationFont(":/fonts/fonts/Weilaiyuan.ttf");
+    QFontDatabase::addApplicationFont(":/fonts/fonts/Huxiaobo.ttf");
+    QFontDatabase::addApplicationFont(":/fonts/fonts/Weilaiyuan.ttf");
     QTranslator translator;
     const QStringList uiLanguages = QLocale::system().uiLanguages();
     for (const QString &locale : uiLanguages) {

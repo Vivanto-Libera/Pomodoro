@@ -1,142 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS>
-<TS version="2.1" language="zh_CN">
+<TS version="2.1" language="eo_001" sourcelanguage="zh_CN">
 <context>
     <name>MainWindow</name>
     <message>
         <location filename="mainwindow.ui" line="25"/>
         <source>Pomodoro</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="183"/>
         <source>代办事项</source>
-        <translation type="unfinished"></translation>
+        <translation>Tasklisto</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="221"/>
         <location filename="mainwindow.cpp" line="326"/>
         <source>隐藏</source>
-        <translation type="unfinished"></translation>
+        <translation>Kaŝu</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="228"/>
         <source>添加项</source>
-        <translation type="unfinished"></translation>
+        <translation>Aldonu Eron</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="248"/>
         <source>删除项</source>
-        <translation type="unfinished"></translation>
+        <translation>Forigu Eron</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="354"/>
         <source>笔记</source>
-        <translation type="unfinished"></translation>
+        <translation>Noto</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="379"/>
         <source>打开笔记</source>
-        <translation type="unfinished"></translation>
+        <translation>Ŝaltu Noton</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="463"/>
         <source>时间</source>
-        <translation type="unfinished"></translation>
+        <translation>Tempo</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="495"/>
         <source>00:00:00</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="577"/>
         <source>番茄钟</source>
-        <translation type="unfinished"></translation>
+        <translation>Pomodoro</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="609"/>
         <source>00:00</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="625"/>
         <location filename="mainwindow.cpp" line="236"/>
         <source>未开始</source>
-        <translation type="unfinished"></translation>
+        <translation>Ne Komencis</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="650"/>
         <source>设置</source>
-        <translation type="unfinished"></translation>
+        <translation>Agordoj</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="670"/>
         <location filename="mainwindow.cpp" line="279"/>
         <source>开始</source>
-        <translation type="unfinished"></translation>
+        <translation>Komencu</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="690"/>
         <source>重置</source>
-        <translation type="unfinished"></translation>
+        <translation>Restarigi</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="851"/>
         <source>音乐</source>
-        <translation type="unfinished"></translation>
+        <translation>Muziko</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="880"/>
         <source>查看歌单</source>
-        <translation type="unfinished"></translation>
+        <translation>Rigardu Kantoliston</translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1002"/>
         <source>50</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.ui" line="1033"/>
         <source>00:00/00:00</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="73"/>
         <source>退出程序</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliros El La Programo</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="73"/>
         <source>正在使用番茄钟，确定要退出吗？</source>
-        <translation type="unfinished"></translation>
+        <translation>Vi uzas la Tomatan Horloĝon, ĉu certas pri eliro?</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="227"/>
         <source>专注中</source>
-        <translation type="unfinished"></translation>
+        <translation>Koncentriĝas</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="230"/>
         <source>休息中</source>
-        <translation type="unfinished"></translation>
+        <translation>Ripozas</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="233"/>
         <source>暂停中</source>
-        <translation type="unfinished"></translation>
+        <translation>Paŭzas</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="245"/>
         <location filename="mainwindow.cpp" line="269"/>
         <location filename="mainwindow.cpp" line="442"/>
         <source>暂停</source>
-        <translation type="unfinished"></translation>
+        <translation>Paŭzu</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="256"/>
         <source>继续</source>
-        <translation type="unfinished"></translation>
+        <translation>Daŭrigu</translation>
     </message>
     <message>
         <location filename="mainwindow.cpp" line="318"/>
