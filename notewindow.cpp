@@ -171,7 +171,7 @@ void NoteWindow::do_language_changed(int index)
             return;
         break;
     case 3:
-        if(!trans.load("localization/Pomodoro_esp.qm"))
+        if(!trans.load("localization/Pomodoro_eo.qm"))
             return;
         break;
     }
