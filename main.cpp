@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     QFontDatabase::addApplicationFont(":/fonts/fonts/Huxiaobo.ttf");
     QFontDatabase::addApplicationFont(":/fonts/fonts/Weilaiyuan.ttf");
-    trans.load("Pomodoro_zh_CN.qm");
+    trans.load("localization/Pomodoro_zh_CN.qm");
     a.installTranslator(&trans);
     MainWindow w;
     w.show();

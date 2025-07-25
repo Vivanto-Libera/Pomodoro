@@ -215,19 +215,19 @@ void MusicListsDialog::do_language_changed(int index)
 {
     switch (index) {
     case 0:
-        if(!trans.load("Pomodoro_zh_CN.qm"))
+        if(!trans.load("localization/Pomodoro_zh_CN.qm"))
             return;
         break;
     case 1:
-        if(!trans.load("Pomodoro_zh_TW.qm"))
+        if(!trans.load("localization/Pomodoro_zh_TW.qm"))
             return;
         break;
     case 2:
-        if(!trans.load("Pomodoro_en.qm"))
+        if(!trans.load("localization/Pomodoro_en.qm"))
             return;
         break;
     case 3:
-        if(!trans.load("Pomodoro_esp.qm"))
+        if(!trans.load("localization/Pomodoro_esp.qm"))
             return;
         break;
     }
