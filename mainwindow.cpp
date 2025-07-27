@@ -299,6 +299,8 @@ void MainWindow::nextMusic()
     }
     if(ui->comboOrder->currentIndex()==2)
     {
+        if(!musicDialog->getListWidget()->count())
+            return;
         musicIndex=QRandomGenerator::global()->bounded(0,musicDialog->getListWidget()->count());
         player->setSource(getUrlFromItem(musicDialog->getListWidget()->item(musicIndex)));
         player->play();
@@ -306,10 +308,14 @@ void MainWindow::nextMusic()
     }
     if(ui->comboOrder->currentIndex()==0)
     {
+        playing=false;
+        if(!musicDialog->getListWidget()->count())
+            return;
         musicIndex++;
         musicIndex=musicIndex>=musicDialog->getListWidget()->count()?0:musicIndex;
         player->setSource(getUrlFromItem(musicDialog->getListWidget()->item(musicIndex)));
         player->play();
+        playing=true;
         return;
     }
 }
@@ -439,6 +445,9 @@ void MainWindow::do_language_changed(int index)
 {
     QString motto=ui->lineEdit->text();
     QString pomoTime=ui->lab_pomoTime->text();
+    QString musicName=ui->lab_musicName->text();
+    QString musicTime=ui->lab_musicTime->text();
+    QString volume=ui->lab_volume->text();
     switch (index) {
     case 0:
         if(!trans.load("localization/Pomodoro_zh_CN.qm"))
@@ -460,6 +469,9 @@ void MainWindow::do_language_changed(int index)
     ui->retranslateUi(this);
     ui->lineEdit->setText(motto);
     ui->lab_pomoTime->setText(pomoTime);
+    ui->lab_musicName->setText(musicName);
+    ui->lab_musicTime->setText(musicTime);
+    ui->lab_volume->setText(volume);
     setStatus(curStatus);
 }
 
@@ -543,12 +555,12 @@ QUrl MainWindow::getUrlFromItem(QListWidgetItem *item)
 
 void MainWindow::on_btn_previous_clicked()
 {
-    int row=musicDialog->getListWidget()->currentRow();
-    row--;
-    row =row<0?musicDialog->getListWidget()->count()-1:row;
-    musicDialog->getListWidget()->setCurrentRow(row);
+    if(!musicDialog->getListWidget()->count())
+        return;
+    musicIndex--;
+    musicIndex =musicIndex<0?musicDialog->getListWidget()->count()-1:musicIndex;
     playing=false;
-    player->setSource(getUrlFromItem(musicDialog->getListWidget()->currentItem()));
+    player->setSource(getUrlFromItem(musicDialog->getListWidget()->item(musicIndex)));
     player->play();
     playing=true;
 }
