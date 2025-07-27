@@ -163,7 +163,7 @@ QScrollBar::handle
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,0,1,0,1">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,4">
+         <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0,10,1">
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout" stretch="0,0,0,0">
             <item>
@@ -317,6 +317,19 @@ QScrollBar::handle
              <enum>Qt::DropAction::MoveAction</enum>
             </property>
            </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Orientation::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </item>

@@ -90,7 +90,7 @@ QComboBox::drop-down:hover
 }
 QToolBar
 {
-	spacing:15px;
+	spacing:10px;
 }
 QPlainTextEdit
 {
