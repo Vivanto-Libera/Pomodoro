@@ -14,9 +14,9 @@ class SetDialog : public QDialog
 
 public:
     explicit SetDialog(QWidget *parent = nullptr);
+    ~SetDialog();
     MainWindow::pomoSetting setting();
     void ini(MainWindow::pomoSetting aSetting);
-    ~SetDialog();
 
 private slots:
     void on_btn_reset_clicked();

@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1000</width>
-    <height>709</height>
+    <height>738</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -923,7 +923,7 @@ QScrollBar::handle
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="0,0,0,0,0,0,0,0">
             <item>
-             <widget class="QPushButton" name="pushButton_3">
+             <widget class="QPushButton" name="btn_playlist">
               <property name="toolTip">
                <string>查看歌单</string>
               </property>

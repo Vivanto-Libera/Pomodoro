@@ -47,7 +47,6 @@ private:
     void readData();
     void saveData();
     void setData();
-    void valueChanged();
 };
 
 #endif // SAVESETTINGDIALOG_H

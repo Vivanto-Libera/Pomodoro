@@ -15,12 +15,13 @@ class MusicListsDialog : public QDialog
     Q_OBJECT
 
 public:
+    explicit MusicListsDialog(QWidget *parent = nullptr);
+    ~MusicListsDialog();
     QStringList listNames;
     QList<QList<QUrl>> musicLists;
-    explicit MusicListsDialog(QWidget *parent = nullptr);
+
     QListWidget* getListWidget();
     QComboBox* getComboBox();
-    ~MusicListsDialog();
 
 private slots:
     void on_comboBox_currentIndexChanged(int index);

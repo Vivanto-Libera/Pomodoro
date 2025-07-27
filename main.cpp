@@ -1,6 +1,4 @@
-//Created By Vivanto(GitHub:Vivanto-Libera)(E-Mail:1425078256@qq.com)
 #include "mainwindow.h"
-
 #include <QApplication>
 #include <QLocale>
 #include <QTranslator>

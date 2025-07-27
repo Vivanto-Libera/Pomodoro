@@ -42,9 +42,9 @@ void SetDialog::on_btn_reset_clicked()
 
 void SetDialog::on_btn_save_clicked()
 {
-    SaveSettingDialog *aDialog=new SaveSettingDialog(this);
-    int ret= aDialog->exec();
-    if(ret == QDialog::Accepted)
+    SaveSettingDialog *aDialog = new SaveSettingDialog(this);
+    int ret = aDialog->exec();
+    if (ret == QDialog::Accepted)
     {
         ini(aDialog->getSetting());
     }
