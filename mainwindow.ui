@@ -240,11 +240,6 @@ QScrollBar::handle
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
              <widget class="QPushButton" name="btn_listVis">
-              <property name="font">
-               <font>
-                <family>未来圆SC</family>
-               </font>
-              </property>
               <property name="toolTip">
                <string/>
               </property>
@@ -1062,11 +1057,26 @@ QScrollBar::handle
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="1,3,1">
+           <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="1,3,0">
             <item>
              <widget class="QLabel" name="lab_musicName">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>16777215</height>
+               </size>
+              </property>
               <property name="text">
                <string/>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
               </property>
              </widget>
             </item>
