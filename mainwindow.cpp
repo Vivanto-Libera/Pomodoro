@@ -624,17 +624,17 @@ void MainWindow::on_btn_play_clicked()
 
 void MainWindow::on_comboOrder_currentIndexChanged(int index)
 {
-    if(index == 0)
+    if (index == 0)
     {
         ui->btn_previous->setEnabled(true);
         ui->btn_next->setEnabled(true);
     }
-    else if(index == 1)
+    else if (index == 1)
     {
         ui->btn_previous->setEnabled(false);
         ui->btn_next->setEnabled(false);
     }
-    else if(index == 2)
+    else if (index == 2)
     {
         ui->btn_previous->setEnabled(false);
         ui->btn_next->setEnabled(true);
