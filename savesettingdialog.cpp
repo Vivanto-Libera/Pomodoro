@@ -3,14 +3,14 @@
 
 QDataStream &operator<<(QDataStream &out,const SaveSettingDialog::savedSetting &aSetting)
 {
-    out<<aSetting.title<<aSetting.setting.focusTime<<aSetting.setting.longBreak
-        <<aSetting.setting.shortBreak<<aSetting.setting.repeat;
+    out << aSetting.title << aSetting.setting.focusTime << aSetting.setting.longBreak
+        << aSetting.setting.shortBreak << aSetting.setting.repeat;
     return out;
 }
 QDataStream &operator>>(QDataStream &in,SaveSettingDialog::savedSetting &aSetting)
 {
-    in>>aSetting.title>>aSetting.setting.focusTime>>aSetting.setting.longBreak
-        >>aSetting.setting.shortBreak>>aSetting.setting.repeat;
+    in >> aSetting.title >> aSetting.setting.focusTime >> aSetting.setting.longBreak
+       >> aSetting.setting.shortBreak >> aSetting.setting.repeat;
     return in;
 }
 
@@ -70,8 +70,8 @@ void SaveSettingDialog::readData()
     while (!fileStream.atEnd())
     {
         savedSetting aSetting;
-        fileStream>>aSetting;
-        settings<<aSetting;
+        fileStream >> aSetting;
+        settings << aSetting;
     }
     aFile.close();
 }
@@ -88,7 +88,7 @@ void SaveSettingDialog::saveData()
     fileStream.setByteOrder(QDataStream::BigEndian);
     for (int i = 0;i < settings.count();i++)
     {
-        fileStream<<settings.at(i);
+        fileStream << settings.at(i);
     }
     aFile.close();
 }
@@ -114,7 +114,7 @@ void SaveSettingDialog::on_btn_changeName_clicked()
     {
         ui->comboBox->setItemText(ui->comboBox->currentIndex(), str);
         settings.replace(ui->comboBox->currentIndex(),
-                         {str,settings.at(ui->comboBox->currentIndex()).setting});
+                         {str, settings.at(ui->comboBox->currentIndex()).setting});
     }
 }
 
@@ -158,7 +158,7 @@ void SaveSettingDialog::on_comboBox_currentIndexChanged(int index)
 
 void SaveSettingDialog::on_spin_focusTime_valueChanged(int arg1)
 {
-    if (ui->comboBox->currentIndex()==-1)
+    if (ui->comboBox->currentIndex() == -1)
     {
         return;
     }
@@ -169,7 +169,7 @@ void SaveSettingDialog::on_spin_focusTime_valueChanged(int arg1)
 
 void SaveSettingDialog::on_spin_ShortRelax_valueChanged(int arg1)
 {
-    if (ui->comboBox->currentIndex()==-1)
+    if (ui->comboBox->currentIndex() == -1)
     {
         return;
     }
@@ -180,7 +180,7 @@ void SaveSettingDialog::on_spin_ShortRelax_valueChanged(int arg1)
 
 void SaveSettingDialog::on_spin_longRelax_valueChanged(int arg1)
 {
-    if (ui->comboBox->currentIndex()==-1)
+    if (ui->comboBox->currentIndex() == -1)
     {
         return;
     }
@@ -191,7 +191,7 @@ void SaveSettingDialog::on_spin_longRelax_valueChanged(int arg1)
 
 void SaveSettingDialog::on_spin_repeatTimes_valueChanged(int arg1)
 {
-    if (ui->comboBox->currentIndex()==-1)
+    if (ui->comboBox->currentIndex() == -1)
     {
         return;
     }

@@ -49,16 +49,18 @@ protected:
     void closeEvent(QCloseEvent *event);
 private:
     Ui::MainWindow *ui;
-    QTimer *aTimer;
+    QTimer *mainTimer;
     QList<aTaskItem> taskListItems;
 
     QTimer *pomoTimer;
     QTimer *flushTimer;
-    pomoStatus curStatus=NoStart;
+    pomoStatus curStatus = NoStart;
     pomoStatus lastStatus;
     qint8 pomoRepeats=0;
-    pomoSetting curSetting;
+    pomoSetting curPomoSetting;
+
     QSettings *settings;
+
     QString motto;
 
     NoteWindow *noteWindow;

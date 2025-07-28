@@ -7,12 +7,12 @@ extern QTranslator trans;
 
 QDataStream &operator<<(QDataStream &out,const MainWindow::aTaskItem &aItem)
 {
-    out<<aItem.aItem<<aItem.checked;
+    out << aItem.aItem << aItem.checked;
     return out;
 }
 QDataStream &operator>>(QDataStream &in,MainWindow::aTaskItem &aItem)
 {
-    in>>aItem.aItem>>aItem.checked;
+    in >> aItem.aItem >> aItem.checked;
     return in;
 }
 
@@ -28,9 +28,9 @@ MainWindow::MainWindow(QWidget *parent)
     musicDialog = new MusicListsDialog(this);
     settings= new QSettings("Viavnto", "Pomodoro");
 
-    connect(ui->ts_combox, SIGNAL(currentIndexChanged(int)), this,SLOT(do_language_changed(int)));
-    connect(ui->ts_combox, SIGNAL(currentIndexChanged(int)), noteWindow,SLOT(do_language_changed(int)));
-    connect(ui->ts_combox, SIGNAL(currentIndexChanged(int)), musicDialog,SLOT(do_language_changed(int)));
+    connect(ui->ts_combox, SIGNAL(currentIndexChanged(int)), this, SLOT(do_language_changed(int)));
+    connect(ui->ts_combox, SIGNAL(currentIndexChanged(int)), noteWindow, SLOT(do_language_changed(int)));
+    connect(ui->ts_combox, SIGNAL(currentIndexChanged(int)), musicDialog, SLOT(do_language_changed(int)));
 
     if (!QFile::exists("items.bin"))
     {
@@ -40,10 +40,12 @@ MainWindow::MainWindow(QWidget *parent)
     {
         readData();
     }
-    aTimer = new QTimer(this);
-    aTimer->setInterval(500);
-    aTimer->setSingleShot(false);
-    aTimer->start();
+
+    mainTimer = new QTimer(this);
+    mainTimer->setInterval(500);
+    mainTimer->setSingleShot(false);
+    mainTimer->start();
+
     pomoTimer = new QTimer(this);
     pomoTimer->stop();
     pomoTimer->setSingleShot(true);
@@ -51,10 +53,10 @@ MainWindow::MainWindow(QWidget *parent)
     flushTimer->stop();
     flushTimer->setInterval(500);
     flushTimer->setSingleShot(false);
-    ui->lab_pomoTime->setText(QString::asprintf("%1").arg(curSetting.focusTime, 2, 10, QChar('0')) + ":00");
+    ui->lab_pomoTime->setText(QString::asprintf("%1").arg(curPomoSetting.focusTime, 2, 10, QChar('0')) + ":00");
     ui->lineEdit->setText(motto);
 
-    connect(aTimer, SIGNAL(timeout()), this, SLOT(setCurTime()));
+    connect(mainTimer, SIGNAL(timeout()), this, SLOT(setCurTime()));
     connect(flushTimer, SIGNAL(timeout()), this, SLOT(setTimeLab()));
     connect(pomoTimer,SIGNAL(timeout()), this, SLOT(do_pomoTimer_timeOut()));
 
@@ -62,10 +64,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(player, &QMediaPlayer::durationChanged, this, &MainWindow::do_durationChanged);
     connect(player, &QMediaPlayer::sourceChanged, this, &MainWindow::do_sourceChanged);
     connect(player, &QMediaPlayer::playbackStateChanged, this,&MainWindow::do_stateChanged);
-    connect(musicDialog->getListWidget(),&QListWidget::itemDoubleClicked,this,&MainWindow::do_musicItemDoubleClicked);
-    connect(musicDialog->getComboBox(),&QComboBox::currentIndexChanged,this,&MainWindow::do_musicListChanged);
+    connect(musicDialog->getListWidget(), &QListWidget::itemDoubleClicked, this, &MainWindow::do_musicItemDoubleClicked);
+    connect(musicDialog->getComboBox(), &QComboBox::currentIndexChanged, this, &MainWindow::do_musicListChanged);
 
-    if(musicDialog->getListWidget()->count()>0)
+    if (musicDialog->getListWidget()->count() > 0)
     {
         player->setSource(getUrlFromItem(musicDialog->getListWidget()->item(0)));
         ui->lab_musicName->setText((getUrlFromItem(musicDialog->getListWidget()->item(0))).fileName());
@@ -105,7 +107,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
 void MainWindow::init()
 {
     listVisible = true;
-    curSetting = {25, 5, 20, 4};
+    curPomoSetting = {25, 5, 20, 4};
 }
 
 void MainWindow::readData()
@@ -118,10 +120,10 @@ void MainWindow::readData()
 void MainWindow::readSetting()
 {
     settings->beginGroup("pomodoro");
-    curSetting.focusTime = settings->value("Focus Time").toInt();
-    curSetting.shortBreak = settings->value("Short Break").toInt();
-    curSetting.longBreak = settings->value("Long Break").toInt();
-    curSetting.repeat = settings->value("Repeats").toInt();
+    curPomoSetting.focusTime = settings->value("Focus Time").toInt();
+    curPomoSetting.shortBreak = settings->value("Short Break").toInt();
+    curPomoSetting.longBreak = settings->value("Long Break").toInt();
+    curPomoSetting.repeat = settings->value("Repeats").toInt();
     motto=settings->value("Motto").toString();
     ui->slider_volume->setValue(settings->value("Volume").toInt());
     ui->ts_combox->setCurrentIndex(settings->value("Language").toInt());
@@ -141,8 +143,8 @@ void MainWindow::readItems()
     while (!fileStream.atEnd())
     {
         aTaskItem aItem;
-        fileStream>>aItem;
-        taskListItems<<aItem;
+        fileStream >> aItem;
+        taskListItems << aItem;
     }
     aFile.close();
 }
@@ -166,7 +168,7 @@ void MainWindow::saveItems()
     fileStream.setByteOrder(QDataStream::BigEndian);
     for (int i = 0;i < taskListItems.count();i++)
     {
-        fileStream<<taskListItems.at(i);
+        fileStream << taskListItems.at(i);
     }
     aFile.close();
 }
@@ -174,10 +176,10 @@ void MainWindow::saveItems()
 void MainWindow::saveSetting()
 {
     settings->beginGroup("pomodoro");
-    settings->setValue("Focus Time", curSetting.focusTime);
-    settings->setValue("Short Break", curSetting.shortBreak);
-    settings->setValue("Long Break", curSetting.longBreak);
-    settings->setValue("Repeats", curSetting.repeat);
+    settings->setValue("Focus Time", curPomoSetting.focusTime);
+    settings->setValue("Short Break", curPomoSetting.shortBreak);
+    settings->setValue("Long Break", curPomoSetting.longBreak);
+    settings->setValue("Repeats", curPomoSetting.repeat);
     settings->setValue("Motto", motto);
     settings->setValue("Volume", ui->slider_volume->value());
     settings->setValue("Language", ui->ts_combox->currentIndex());
@@ -225,20 +227,20 @@ void MainWindow::do_pomoTimer_timeOut()
     {
         setStatus(pomoStatus::Relax);
         pomoRepeats++;
-        if (pomoRepeats != curSetting.repeat)
+        if (pomoRepeats != curPomoSetting.repeat)
         {
-            pomoTimer->setInterval(curSetting.shortBreak * 60000);
+            pomoTimer->setInterval(curPomoSetting.shortBreak * 60000);
         }
         else
         {
-            pomoTimer->setInterval(curSetting.longBreak * 60000);
+            pomoTimer->setInterval(curPomoSetting.longBreak * 60000);
         }
         pomoTimer->start();
         return;
     }
     else
     {
-        if (pomoRepeats==curSetting.repeat)
+        if (pomoRepeats == curPomoSetting.repeat)
         {
             resetPomo();
             return;
@@ -246,7 +248,7 @@ void MainWindow::do_pomoTimer_timeOut()
         else
         {
             setStatus(pomoStatus::Focus);
-            pomoTimer->setInterval(curSetting.focusTime * 60000);
+            pomoTimer->setInterval(curPomoSetting.focusTime * 60000);
             pomoTimer->start();
             return;
         }
@@ -278,7 +280,7 @@ void MainWindow::startPomo()
     ui->btn_startOrPause->setIcon(aIcon);
     ui->btn_startOrPause->setToolTip(tr("暂停"));
     setStatus(pomoStatus::Focus);
-    pomoTimer->setInterval(curSetting.focusTime * 60000);
+    pomoTimer->setInterval(curPomoSetting.focusTime * 60000);
     flushTimer->start();
     pomoTimer->start();
 }
@@ -315,7 +317,8 @@ void MainWindow::resetPomo()
     flushTimer->stop();
     pomoTimer->stop();
     pomoRepeats = 0;
-    ui->lab_pomoTime->setText(QString::asprintf("%1").arg(curSetting.focusTime, 2, 10, QChar('0')) + ":00");
+    ui->lab_pomoTime->setText(QString::asprintf("%1")
+                                  .arg(curPomoSetting.focusTime, 2, 10, QChar('0')) + ":00");
 }
 
 void MainWindow::on_btn_startOrPause_clicked()
@@ -342,11 +345,11 @@ void MainWindow::on_btn_reset_clicked()
 void MainWindow::on_btn_setting_clicked()
 {
     SetDialog *aDialog = new SetDialog(this);
-    aDialog->ini(curSetting);
+    aDialog->ini(curPomoSetting);
     int ret = aDialog->exec();
     if (ret == QDialog::Accepted)
     {
-        curSetting=aDialog->setting();
+        curPomoSetting=aDialog->setting();
         resetPomo();
     }
     delete aDialog;
@@ -382,7 +385,7 @@ void MainWindow::on_btn_addItem_clicked()
                     | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
     ui->taskList->addItem(aItem);
     aTaskItem aTItem = {*aItem, false};
-    taskListItems<<aTItem;
+    taskListItems << aTItem;
 }
 
 
@@ -473,9 +476,11 @@ void MainWindow::nextMusic()
     {
         playing=false;
         if(!musicDialog->getListWidget()->count())
+        {
             return;
+        }
         musicIndex++;
-        musicIndex=musicIndex>=musicDialog->getListWidget()->count()?0:musicIndex;
+        musicIndex=musicIndex >= musicDialog->getListWidget()->count() ? 0 : musicIndex;
         player->setSource(getUrlFromItem(musicDialog->getListWidget()->item(musicIndex)));
         player->play();
         playing=true;
@@ -493,8 +498,10 @@ void MainWindow::nextMusic()
     if (ui->comboOrder->currentIndex() == 2)
     {
         if (!musicDialog->getListWidget()->count())
+        {
             return;
-        musicIndex=QRandomGenerator::global()->bounded(0, musicDialog->getListWidget()->count());
+        }
+        musicIndex = QRandomGenerator::global()->bounded(0, musicDialog->getListWidget()->count());
         player->setSource(getUrlFromItem(musicDialog->getListWidget()->item(musicIndex)));
         player->play();
         return;
@@ -567,7 +574,7 @@ void MainWindow::do_musicListChanged(int index)
     musicIndex = 0;
     playing = false;
     player->stop();
-    if (musicDialog->getListWidget()->count()==0)
+    if (musicDialog->getListWidget()->count() == 0)
     {
         player->setSource(QUrl());
     }
@@ -589,7 +596,7 @@ void MainWindow::on_btn_previous_clicked()
         return;
     }
     musicIndex--;
-    musicIndex = musicIndex<0 ? (musicDialog->getListWidget()->count() - 1) : musicIndex;
+    musicIndex = musicIndex < 0 ? (musicDialog->getListWidget()->count() - 1) : musicIndex;
     playing = false;
     player->setSource(getUrlFromItem(musicDialog->getListWidget()->item(musicIndex)));
     player->play();

@@ -43,11 +43,11 @@ MusicListsDialog::~MusicListsDialog()
 
 void MusicListsDialog::init()
 {
-    listNames<<tr("初始歌单");
+    listNames << tr("初始歌单");
     QList<QUrl> aList;
     QUrl aUrl;
-    aList<<aUrl;
-    musicLists<<aList;
+    aList << aUrl;
+    musicLists << aList;
     setMusic();
 }
 
@@ -64,12 +64,12 @@ void MusicListsDialog::readMusic()
     while (!fileStream.atEnd())
     {
         QList<QUrl> aList;
-        fileStream>>aList;
-        musicLists<<aList;
+        fileStream >> aList;
+        musicLists << aList;
     }
     aFile.close();
     settings->beginGroup("pomodoro");
-    listNames=settings->value("List Name").toStringList();
+    listNames = settings->value("List Name").toStringList();
     settings->endGroup();
 }
 
@@ -93,9 +93,10 @@ void MusicListsDialog::saveMusic()
     fileStream.setByteOrder(QDataStream::BigEndian);
     for (int i = 0;i < musicLists.count();i++)
     {
-        fileStream<<musicLists.at(i);
+        fileStream << musicLists.at(i);
     }
     aFile.close();
+
     settings->beginGroup("pomodoro");
     settings->setValue("List Name",listNames);
     settings->endGroup();
@@ -119,11 +120,11 @@ void MusicListsDialog::on_comboBox_currentIndexChanged(int index)
 void MusicListsDialog::on_btn_add_clicked()
 {
     ui->comboBox->addItem(tr("未命名歌单"));
-    listNames<<tr("未命名歌单");
+    listNames << tr("未命名歌单");
     QList<QUrl> aList;
     QUrl aUrl;
-    aList<<aUrl;
-    musicLists<<aList;
+    aList << aUrl;
+    musicLists << aList;
     ui->comboBox->setCurrentIndex(ui->comboBox->count() - 1);
 }
 
@@ -204,12 +205,14 @@ void MusicListsDialog::on_btn_deleteMusic_clicked()
 void MusicListsDialog::on_btn_up_clicked()
 {
     int index = ui->listWidget->currentRow();
-    if(index<=0)
+    if (index == -1)
+    {
         return;
-    QListWidgetItem *aItem=ui->listWidget->takeItem(index);
-    ui->listWidget->insertItem(index-1,aItem);
+    }
+    QListWidgetItem *aItem = ui->listWidget->takeItem(index);
+    ui->listWidget->insertItem(index - 1, aItem);
     ui->listWidget->setCurrentItem(aItem);
-    musicLists[ui->comboBox->currentIndex()].swapItemsAt(index+1,index);
+    musicLists[ui->comboBox->currentIndex()].swapItemsAt(index + 1, index);
 }
 
 

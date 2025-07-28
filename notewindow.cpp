@@ -6,12 +6,12 @@ extern QTranslator trans;
 
 QDataStream &operator<<(QDataStream &out,const NoteWindow::note &aNote)
 {
-    out<<aNote.title<<aNote.text;
+    out << aNote.title << aNote.text;
     return out;
 }
 QDataStream &operator>>(QDataStream &in,NoteWindow::note &aNote)
 {
-    in>>aNote.title>>aNote.text;
+    in >> aNote.title >> aNote.text;
     return in;
 }
 
@@ -82,8 +82,8 @@ void NoteWindow::readNotes()
     while (!fileStream.atEnd())
     {
         note aNote;
-        fileStream>>aNote;
-        notes<<aNote;
+        fileStream >> aNote;
+        notes << aNote;
     }
     aFile.close();
 }
@@ -109,7 +109,7 @@ void NoteWindow::saveNotes()
     fileStream.setByteOrder(QDataStream::BigEndian);
     for (int i = 0;i < notes.count();i++)
     {
-        fileStream<<notes.at(i);
+        fileStream << notes.at(i);
     }
     aFile.close();
 }
@@ -139,8 +139,10 @@ void NoteWindow::on_btn_deleteNote_clicked()
     {
         QMessageBox::StandardButton result;
         result = QMessageBox::question(this, tr("确认删除"), tr("是否删除该笔记？"));
-        if (result != QMessageBox::Yes)
+        if (result == QMessageBox::Yes)
         {
+            notes.removeAt(ui->noteCombo->currentIndex());
+            ui->noteCombo->removeItem(ui->noteCombo->currentIndex());
             return;
         }
     }
@@ -149,8 +151,6 @@ void NoteWindow::on_btn_deleteNote_clicked()
         QMessageBox::critical (this,tr("删除失败"),tr("无法删除最后一个笔记"));
         return;
     }
-    notes.removeAt(ui->noteCombo->currentIndex());
-    ui->noteCombo->removeItem(ui->noteCombo->currentIndex());
 }
 
 void NoteWindow::on_plainTextEdit_textChanged()
@@ -168,7 +168,7 @@ void NoteWindow::on_btn_changeName_clicked()
     if(ok && !str.isEmpty())
     {
         ui->noteCombo->setItemText(ui->noteCombo->currentIndex(), str);
-        notes.replace(ui->noteCombo->currentIndex(),{str, notes.at(ui->noteCombo->currentIndex()).text});
+        notes.replace(ui->noteCombo->currentIndex(), {str, notes.at(ui->noteCombo->currentIndex()).text});
     }
 }
 
