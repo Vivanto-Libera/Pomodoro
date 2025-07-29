@@ -5,13 +5,6 @@
 
 本软件的音乐播放器没有加入歌曲，大家可以自己加入喜欢的歌曲或者听力素材。
 
-## 目录
-
-[toc]
-
-
-
-
 ## 素材版权声明
 图标素材来源：
 https://www.iconfinder.com/search/icons?family=phosphor-bold
