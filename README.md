@@ -5,18 +5,14 @@
 
 本软件的音乐播放器没有加入歌曲，大家可以自己加入喜欢的歌曲或者听力素材。
 
-## 目录
-
-[toc]
-
-
-
-
 ## 素材版权声明
 图标素材来源：
 https://www.iconfinder.com/search/icons?family=phosphor-bold
+
 https://www.iconfinder.com/search/icons?family=fluent-solid-20px
+
 https://www.iconfinder.com/search/icons?family=fluent-regular-24px
+
 https://dev.mysql.com/downloads/installer/?use_xbridge3=true&loader_name=forest&need_sec_link=1&sec_link_scene=im&theme=light
 
 ## 需求分析
@@ -56,27 +52,29 @@ https://dev.mysql.com/downloads/installer/?use_xbridge3=true&loader_name=forest&
 ### 前端设计
 
 设计了五个界面，五个类。分别为mainwindow（主界面）, notewindow（笔记界面）， musiclistsdialog（歌单界面）， setdialog（番茄钟设置）， savesettingdialog（番茄钟设置储存）
-
-![image-20250728165830880](C:\Users\Vivanto\AppData\Roaming\Typora\typora-user-images\image-20250728165830880.png)
-
+<div align="center">
+<img width="1000" height="766" alt="image" src="https://github.com/user-attachments/assets/dbbb9ee1-aef6-412a-9891-169663555d71" />
+<br>
 <center><b><font size ='2'>mainwindow</font></font></b></center>
-
-![image-20250728170448216](C:\Users\Vivanto\AppData\Roaming\Typora\typora-user-images\image-20250728170448216.png)
-
+<br><br>
+<img width="607" height="431" alt="image" src="https://github.com/user-attachments/assets/302d7254-e996-429b-b7ab-8f9ff4faf16b" />
+<br>
 <center><b><font size ='2'>notewindow</font></font></b></center>
-
-![image-20250728170532912](C:\Users\Vivanto\AppData\Roaming\Typora\typora-user-images\image-20250728170532912.png)
-
+<br><br>
+<img width="296" height="333" alt="image" src="https://github.com/user-attachments/assets/e7ce94ce-f322-4152-89e5-65c0a925538f" />
+<br>
 <center><b><font size ='2'>musiclistsdialog</font></font></b></center>
-
-![image-20250728170624521](C:\Users\Vivanto\AppData\Roaming\Typora\typora-user-images\image-20250728170624521.png)
-
+<br><br>
+<img width="251" height="244" alt="image" src="https://github.com/user-attachments/assets/d16da071-f0fe-4d46-8c82-337ac65aba9f" />
+<br>
 <center><b><font size ='2'>setdialog</font></font></b></center>
-
-![image-20250728170701570](C:\Users\Vivanto\AppData\Roaming\Typora\typora-user-images\image-20250728170701570.png)
-
+<br><br>
+<img width="275" height="216" alt="image" src="https://github.com/user-attachments/assets/1db23845-d82a-4df3-b642-cb3e8c403c35" />
+<br>
 <center><b><font size ='2'>savesettingdialog</font></font></b></center>
-
+</div>
+<br>
+    
 ### 番茄钟模块
 
 定义了一个结构pomoSetting用于表示番茄钟的设置。
