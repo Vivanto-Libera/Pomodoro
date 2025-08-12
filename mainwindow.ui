@@ -214,7 +214,7 @@ QScrollBar::handle
                </font>
               </property>
               <property name="text">
-               <string>代办事项</string>
+               <string>待办事项</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignmentFlag::AlignCenter</set>
